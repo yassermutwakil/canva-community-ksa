@@ -1,0 +1,362 @@
+{
+  "version": 2,
+  "updated": "2026-11-18T22:38:12.830Z",
+  "events": [
+    {
+      "slug": "branding",
+      "art": "brand",
+      "color": "#7b2ff2",
+      "format": "online",
+      "img": "assets/event-branding.jpg",
+      "imgWide": "assets/event-branding-wide.jpg",
+      "title": "Branding for Elites",
+      "type": {
+        "en": "Online session",
+        "ar": "جلسة أونلاين"
+      },
+      "venue": {
+        "en": "Online",
+        "ar": "أونلاين"
+      },
+      "place": {
+        "en": "Live online session",
+        "ar": "جلسة مباشرة أونلاين"
+      },
+      "short": {
+        "en": "Learn what a brand really is, build yours step by step, and leave with your first Brand Kit in Canva.",
+        "ar": "افهم ايش هو البراند، وابنِه خطوة بخطوة، واخرج بأول Brand Kit جاهز لمشروعك على Canva."
+      },
+      "desc": {
+        "en": "The first stop of Canva World Tour in Saudi Arabia. A live online session for business owners, entrepreneurs, marketers, designers and content creators. You leave with your first Brand Kit, ready in Canva.",
+        "ar": "أول محطة من Canva World Tour في السعودية. جلسة مباشرة أونلاين لأصحاب الأعمال ورواد المشاريع والمسوّقين والمصممين وصنّاع المحتوى. وتخرج منها بأول Brand Kit جاهز على Canva."
+      },
+      "note": {
+        "en": "Seats are limited to 100 and every registration is reviewed. Selected guests get the joining link by email.",
+        "ar": "المقاعد 100 فقط، وكل تسجيل يمر بترشيح. ويصل المقبولين رابط اللقاء على البريد الإلكتروني."
+      },
+      "start": "2026-11-21T19:00:00+03:00",
+      "end": "2026-11-21T20:30:00+03:00",
+      "map": "",
+      "learn": [
+        {
+          "en": "What a brand is, and how to build one step by step",
+          "ar": "ايش هو البراند، وكيف تبنيه خطوة بخطوة"
+        },
+        {
+          "en": "The elements of your brand, and how to keep them consistent everywhere",
+          "ar": "عناصر البراند، وكيف تخليها ثابتة في كل مكان"
+        },
+        {
+          "en": "How to apply it in Canva and set up a Brand Kit for your business",
+          "ar": "كيف تطبّقه على Canva وتجهّز Brand Kit لمشروعك"
+        }
+      ],
+      "agenda": [
+        [
+          "",
+          {
+            "en": "What you need to know",
+            "ar": "معلومات تهمك"
+          },
+          {
+            "en": "Brand basics, with real examples.",
+            "ar": "أساسيات البراند بأمثلة حقيقية."
+          },
+          "talk"
+        ],
+        [
+          "",
+          {
+            "en": "Interaction and games",
+            "ar": "تفاعل وألعاب"
+          },
+          {
+            "en": "Quick games that put the ideas to work.",
+            "ar": "ألعاب سريعة تطبّق فيها الأفكار."
+          },
+          "social"
+        ],
+        [
+          "",
+          {
+            "en": "Live hands-on exercises in Canva",
+            "ar": "تمارين عملية مباشرة على Canva"
+          },
+          {
+            "en": "Build your Brand Kit with us, in your own account.",
+            "ar": "ابنِ Brand Kit معنا، في حسابك."
+          },
+          "workshop"
+        ],
+        [
+          "",
+          {
+            "en": "Gifts and surprises from Canva",
+            "ar": "هدايا ومفاجآت من Canva"
+          },
+          {
+            "en": "Plus 3 months of Canva Pro, free.",
+            "ar": "ومعها اشتراك Canva Pro مجاني لـ 3 شهور."
+          },
+          "gift"
+        ]
+      ],
+      "register": "https://lu.ma/ot9xgj85"
+    },
+    {
+      "slug": "business",
+      "art": "business",
+      "color": "#2f7cf6",
+      "format": "inperson",
+      "img": "assets/event-business.jpg",
+      "imgWide": "assets/event-business-wide.jpg",
+      "title": "Canva for Business",
+      "type": {
+        "en": "Meetup",
+        "ar": "لقاء حضوري"
+      },
+      "venue": {
+        "en": "Wadi Jeddah Innovation Complex",
+        "ar": "مجمع وادي جدة للابتكار"
+      },
+      "place": {
+        "en": "Wadi Jeddah Innovation Complex",
+        "ar": "مجمع وادي جدة للابتكار"
+      },
+      "short": {
+        "en": "Run your business on one brand: turn it into ready assets and work hands-on in Canva.",
+        "ar": "شغّل مشروعك على براند واحد: حوّله لأصول جاهزة، واشتغل عليه عمليًا في Canva."
+      },
+      "desc": {
+        "en": "For business owners, freelancers and small marketing teams. Hear a real business owner’s story, turn your brand into a ready set of assets, and work hands-on in Canva with team challenges.",
+        "ar": "لأصحاب الأعمال والمستقلين وفرق التسويق الصغيرة. تسمع قصة صاحب مشروع حقيقية، وتحوّل براندك لمجموعة أصول جاهزة، وتشتغل عمليًا في Canva مع تحديات جماعية."
+      },
+      "addr": {
+        "en": "Wadi Jeddah, Jeddah",
+        "ar": "وادي جدة، جدة"
+      },
+      "start": "2026-11-27T16:00:00+03:00",
+      "end": "2026-11-27T21:00:00+03:00",
+      "map": "Wadi Jeddah Innovation Complex, Jeddah",
+      "learn": [
+        {
+          "en": "A real business owner’s story, live",
+          "ar": "قصة صاحب مشروع حقيقية، على المسرح"
+        },
+        {
+          "en": "Turn your brand into a ready set of assets",
+          "ar": "حوّل براندك لمجموعة أصول جاهزة"
+        },
+        {
+          "en": "Work hands-on in Canva for your business, with team challenges",
+          "ar": "اشتغل عمليًا في Canva لمشروعك، مع تحديات جماعية"
+        }
+      ],
+      "agenda": [
+        [
+          "",
+          {
+            "en": "Welcome and intro",
+            "ar": "ترحيب وافتتاح"
+          },
+          {
+            "en": "Check in with your Luma QR code, meet the room and settle in.",
+            "ar": "سجّل دخولك برمز Luma، وتعرّف على الحضور."
+          },
+          "social"
+        ],
+        [
+          "",
+          {
+            "en": "Interaction",
+            "ar": "تفاعل"
+          },
+          {
+            "en": "Quick games and questions that get everyone talking.",
+            "ar": "ألعاب وأسئلة سريعة تكسر الجمود."
+          },
+          "social"
+        ],
+        [
+          "",
+          {
+            "en": "Guest speaker",
+            "ar": "المتحدث الضيف"
+          },
+          {
+            "en": "30 minutes with someone who has done it: a talk or a conversation with the host.",
+            "ar": "30 دقيقة مع شخص خاض التجربة: حديث أو حوار مع المضيف."
+          },
+          "talk"
+        ],
+        [
+          "",
+          {
+            "en": "Hands-on challenges in Canva",
+            "ar": "تحديات عملية في Canva"
+          },
+          {
+            "en": "Work in teams on the session topic, live in Canva.",
+            "ar": "اشتغل مع فريقك على موضوع اللقاء، مباشرة في Canva."
+          },
+          "workshop"
+        ],
+        [
+          "",
+          {
+            "en": "Hospitality",
+            "ar": "ضيافة"
+          },
+          {
+            "en": "Food, drinks and a break.",
+            "ar": "أكل ومشروبات واستراحة."
+          },
+          "social"
+        ],
+        [
+          "",
+          {
+            "en": "Networking",
+            "ar": "تواصل"
+          },
+          {
+            "en": "Meet founders, marketers and creators from Jeddah.",
+            "ar": "تعرّف على رواد أعمال ومسوّقين وصنّاع محتوى من جدة."
+          },
+          "social"
+        ]
+      ],
+      "register": "https://lu.ma/6yy8yxk4"
+    },
+    {
+      "slug": "campaign",
+      "art": "campaign",
+      "color": "#ff3b4b",
+      "format": "inperson",
+      "img": "assets/event-campaign.jpg",
+      "imgWide": "assets/event-campaign-wide.jpg",
+      "title": "Campaigns That Hit",
+      "type": {
+        "en": "Meetup",
+        "ar": "لقاء حضوري"
+      },
+      "venue": {
+        "en": "White Spaces · Randa Tower, Jeddah",
+        "ar": "White Spaces · برج رندة، جدة"
+      },
+      "place": {
+        "en": "White Spaces · Randa Tower branch",
+        "ar": "White Spaces · فرع برج رندة"
+      },
+      "short": {
+        "en": "Learn how marketing really works, then build your campaign in Canva, from brief to design.",
+        "ar": "افهم كيف يشتغل التسويق فعلاً، وبعدها ابنِ حملتك في Canva، من الـ Brief للتصميم."
+      },
+      "desc": {
+        "en": "For business owners, marketers and freelancers. Find out why people aren’t buying yet, define your customer and your message, turn one idea into a campaign on one page, and design it in Canva with its newest features.",
+        "ar": "لأصحاب الأعمال والمسوّقين والمستقلين. تعرف ليش الناس ما يشترون منك للحين، وتحدد عميلك ورسالتك، وتحوّل فكرة وحدة لحملة في صفحة وحدة، وتصممها في Canva بأحدث مميزاته."
+      },
+      "addr": {
+        "en": "7915 King Abdul Aziz Rd, An Nahdah, Jeddah 23523",
+        "ar": "7915 طريق الملك عبدالعزيز، النهضة، جدة 23523"
+      },
+      "note": {
+        "en": "Parking around the tower fills up, and the building runs a valet service. Come a little early.",
+        "ar": "المواقف حول البرج تمتلئ بسرعة، وفيه خدمة صف سيارات في المبنى. تعال بدري شوي."
+      },
+      "start": "2026-11-30T18:00:00+03:00",
+      "end": "2026-11-30T21:00:00+03:00",
+      "map": "White Spaces Randa Tower, 7915 King Abdul Aziz Rd, An Nahdah, Jeddah 23523",
+      "learn": [
+        {
+          "en": "How marketing really works: be remembered, be found, be easy to buy from",
+          "ar": "كيف يشتغل التسويق فعلاً: يتذكرونك، يلقونك، ويشترون بسهولة"
+        },
+        {
+          "en": "Write your positioning statement and define your customer",
+          "ar": "اكتب جملة موقعك وحدد عميلك"
+        },
+        {
+          "en": "Turn one idea into a campaign on one page, then design it in Canva",
+          "ar": "حوّل فكرة وحدة لحملة في صفحة وحدة، وصممها في Canva"
+        }
+      ],
+      "agenda": [
+        [
+          "",
+          {
+            "en": "Welcome and intro",
+            "ar": "ترحيب وافتتاح"
+          },
+          {
+            "en": "Check in with your Luma QR code, meet the room and settle in.",
+            "ar": "سجّل دخولك برمز Luma، وتعرّف على الحضور."
+          },
+          "social"
+        ],
+        [
+          "",
+          {
+            "en": "Interaction",
+            "ar": "تفاعل"
+          },
+          {
+            "en": "Quick games and questions that get everyone talking.",
+            "ar": "ألعاب وأسئلة سريعة تكسر الجمود."
+          },
+          "social"
+        ],
+        [
+          "",
+          {
+            "en": "Guest speaker",
+            "ar": "المتحدث الضيف"
+          },
+          {
+            "en": "30 minutes with someone who has done it: a talk or a conversation with the host.",
+            "ar": "30 دقيقة مع شخص خاض التجربة: حديث أو حوار مع المضيف."
+          },
+          "talk"
+        ],
+        [
+          "",
+          {
+            "en": "Hands-on challenges in Canva",
+            "ar": "تحديات عملية في Canva"
+          },
+          {
+            "en": "Work in teams on the session topic, live in Canva.",
+            "ar": "اشتغل مع فريقك على موضوع اللقاء، مباشرة في Canva."
+          },
+          "workshop"
+        ],
+        [
+          "",
+          {
+            "en": "Hospitality",
+            "ar": "ضيافة"
+          },
+          {
+            "en": "Food, drinks and a break.",
+            "ar": "أكل ومشروبات واستراحة."
+          },
+          "social"
+        ],
+        [
+          "",
+          {
+            "en": "Networking",
+            "ar": "تواصل"
+          },
+          {
+            "en": "Meet founders, marketers and creators from Jeddah.",
+            "ar": "تعرّف على رواد أعمال ومسوّقين وصنّاع محتوى من جدة."
+          },
+          "social"
+        ]
+      ],
+      "register": "https://lu.ma/36tt6ifu"
+    }
+  ],
+  "articles": []
+}
