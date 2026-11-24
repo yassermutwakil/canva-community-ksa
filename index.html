@@ -1,28 +1,16 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<!doctype html><html><head><meta charset=utf8>
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=0449a055-9bee-4d06-b442-3948c7852d95
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. --><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Canva Community Saudi Arabia · Canva World Tour Jeddah</title>
 <meta name="description" content="Canva Community Saudi Arabia hosts Canva World Tour in Jeddah for the first time: three free sessions in November 2026. مجتمع Canva في السعودية — ثلاثة لقاءات مجانية في نوفمبر 2026.">
 <link rel="icon" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
-<link rel="canonical" href="https://canvacommunitysa.com/">
-<meta property="og:site_name" content="Canva Community Saudi Arabia">
-<meta property="og:title" content="Canva Community Saudi Arabia · Canva World Tour Jeddah">
-<meta property="og:description" content="Canva World Tour comes to Saudi Arabia for the first time. Free sessions in Jeddah and online. مجتمع Canva في السعودية">
-<meta property="og:url" content="https://canvacommunitysa.com/">
+<meta property="og:title" content="Canva Community Saudi Arabia">
+<meta property="og:description" content="Canva World Tour comes to Saudi Arabia for the first time. Three free sessions in Jeddah and online, November 2026.">
+<meta property="og:image" content="assets/event-business.jpg">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="ar_SA">
-<meta property="og:image" content="https://canvacommunitysa.com/assets/og-image.jpg">
-<meta property="og:image:secure_url" content="https://canvacommunitysa.com/assets/og-image.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Canva Community Saudi Arabia: Design better, together">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Canva Community Saudi Arabia · Canva World Tour Jeddah">
-<meta name="twitter:description" content="Canva World Tour comes to Saudi Arabia for the first time. Free sessions in Jeddah and online.">
-<meta name="twitter:image" content="https://canvacommunitysa.com/assets/og-image.jpg">
-<meta name="theme-color" content="#8b3dff">
-</head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout: Gatherva-style long-scroll event site, Think Forward speaker/closing sections,
    dressed in the Canva Community KSA system (Canva purple, cyan, life/electric/sky gradients). */
@@ -1500,6 +1488,7 @@ function navHTML(route){
       <a href="#events" class="${on('events')}">${T('Events','الفعاليات')}</a>
       <a href="#speakers" class="${on('speakers')}">${T('Speakers','المتحدثون')}</a>
       <a href="#community" class="${on('community')}">${T('Community','المجتمع')}</a>
+      <a href="attending/">${T('I’m attending','خليني أشوفكم')}</a>
     </nav>
     <div class="nav-tools">
       <button class="lang" id="langBtn" type="button" aria-label="${T('Switch to Arabic','التبديل إلى الإنجليزية')}">${LANG==='ar' ? 'EN' : '<span class="ar">عربي</span>'}</button>
@@ -1509,9 +1498,9 @@ function navHTML(route){
   </div>`;
 }
 function menuHTML(){
-  const links = [['home',T('Home','الرئيسية')],['events',T('Events','الفعاليات')],['speakers',T('Speakers','المتحدثون')],['community',T('Community','المجتمع')]];
+  const links = [['#home',T('Home','الرئيسية')],['#events',T('Events','الفعاليات')],['#speakers',T('Speakers','المتحدثون')],['#community',T('Community','المجتمع')],['attending/',T('I’m attending','خليني أشوفكم')]];
   return `<div class="menu-top">${lockup()}<button class="burger" id="menuClose" type="button" style="display:grid" aria-label="${T('Close menu','أغلق القائمة')}">${I.close}</button></div>
-  <nav class="menu-links">${links.map((l,i)=>`<a href="#${l[0]}" style="transition-delay:${.18+i*.07}s">${l[1]}</a>`).join('')}</nav>
+  <nav class="menu-links">${links.map((l,i)=>`<a href="${l[0]}" style="transition-delay:${.18+i*.07}s">${l[1]}</a>`).join('')}</nav>
   <div class="menu-foot"><a class="btn btn-light" href="#events">${T('See upcoming events','الفعاليات القادمة')} ${I.arr}</a><button class="btn btn-ghost" type="button" data-lang>${LANG==='ar'?'English':'عربي'}</button></div>`;
 }
 
@@ -1823,7 +1812,7 @@ function pageEvent(slug){
       <div class="tags rv" style="--d:.05s"><span class="tag">${L(e.type)}</span><span class="tag">${fmtLabel(e)}</span>${e.tba?`<span class="tag">${T('Date soon','الموعد قريبًا')}</span>`:''}</div>
       <h1 class="display" data-split style="font-size:clamp(46px,7.4vw,108px)">${esc(e.title)}</h1>
       <p class="lede rv" style="--d:.15s">${L(e.desc)}</p>
-      <div class="ctas rv" style="--d:.22s">${reg}${e.start?`<a class="btn btn-ghost mag" href="${gcal(e)}" target="_blank" rel="noopener">${I.cal}${T('Add to calendar','أضف للتقويم')}</a>`:''}</div>
+      <div class="ctas rv" style="--d:.22s">${reg}<a class="btn btn-ghost mag" href="attending/">${I.spk}${T('I’m attending','خليني أشوفكم')}</a>${e.start?`<a class="btn btn-ghost mag" href="${gcal(e)}" target="_blank" rel="noopener">${I.cal}${T('Add to calendar','أضف للتقويم')}</a>`:''}</div>
       <div class="facts rv" style="--d:.3s">
         <div><small>${T('Date','التاريخ')}</small><b>${dateLong(e)}</b></div>
         <div><small>${T('Time','الوقت')}</small><b>${timeRange(e)}</b></div>
@@ -2354,17 +2343,4 @@ go(routeOf(), true);
 })();
 </script>
 
-<style id="mobile-fixes">
-.copy-r .adm{display:none}
-/* Mobile fixes: grid items must be allowed to shrink below their content width */
-.pgrid>*,.tiers>*,.stats>*,.bento>*,.spk-grid>*,.teams>*,.facts>*,.learn>*,.paths>*,.foot>*,.next>*,.tba-grid>*,.faq>*,.venue>*,.amb>*,.vals>*,.reach>*,.rowx>*,.callout>*,.shead>*,.gal>*,.feed>*{min-width:0}
-.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
-.pt .plogo{max-width:100%;padding:14px 16px}
-.pt .nm,.pt .nm span,.pt .nm small{max-width:100%;overflow-wrap:anywhere}
-img,svg,video{max-width:100%}
-@media (min-width:760px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
-@media (max-width:860px){.tiers{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:480px){.pgrid{grid-template-columns:minmax(0,1fr)!important}.pt{aspect-ratio:auto;min-height:0}.tier{padding:24px 20px}}
-</style>
 </body></html>
