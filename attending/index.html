@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=0449a055-9bee-4d06-b442-3948c7852d95
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>خليني أشوفكم · Canva Community Saudi Arabia</title>
+<meta name="description" content="Make your own Canva World Tour share card and post that you are attending. اصنع بطاقتك وشارك إنك حاضر.">
+<link rel="icon" href="../assets/logo.png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#f3f4f7; --surface:#ffffff; --fg:#0f1015; --fg-soft:#404f6d; --fg-mute:#6b7488;
+  --line:#e3e5ec; --purple:#8b3dff; --purple-ink:#7d2ae8; --tint:#efe5ff; --cyan:#00c4cc; --electric:#6420ff;
+  --night:#0f1015; --pill:9999px; --ease:cubic-bezier(.22,1,.36,1);
+  --f-en:"Canva Sans Display",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-ar:"Graphik Arabic","Canva Sans Display",Tahoma,sans-serif;
+  --shadow:0 24px 48px rgba(24,44,89,.14);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c0d12; --bg-soft:#15161e; --surface:#181922; --fg:#f4f5f8; --fg-soft:#b9bfce; --fg-mute:#8f97ab;
+  --line:#282a37; --purple:#a77bff; --purple-ink:#b48dff; --tint:#251b40;
+  --shadow:0 24px 48px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c0d12; --bg-soft:#15161e; --surface:#181922; --fg:#f4f5f8; --fg-soft:#b9bfce; --fg-mute:#8f97ab;
+  --line:#282a37; --purple:#a77bff; --purple-ink:#b48dff; --tint:#251b40;
+  --shadow:0 24px 48px rgba(0,0,0,.45); color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-en);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+html[lang="ar"] body{font-family:var(--f-ar);line-height:1.75}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--purple);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:max(18px,env(safe-area-inset-left,0px))}
+
+/* ---- top bar ---- */
+.top{display:flex;align-items:center;gap:16px;height:74px}
+.brandmark{display:inline-flex;align-items:center;gap:11px;font-family:var(--f-en);font-size:17px;letter-spacing:-.02em;direction:ltr;white-space:nowrap}
+.brandmark img{width:32px;height:32px;border-radius:9px}
+.brandmark b{font-weight:800}.brandmark span{font-weight:500;opacity:.9}
+.top .sp{margin-inline-start:auto}
+.ghost{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--pill);border:0;background:var(--bg-soft);font-size:14.5px;font-weight:600;cursor:pointer;transition:background .3s}
+.ghost:hover{background:var(--tint);color:var(--purple-ink)}
+
+/* ---- head ---- */
+.head{padding-block:clamp(14px,3vw,34px) clamp(22px,3vw,34px);max-width:46ch}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-ink)}
+html[lang="ar"] .eyebrow{letter-spacing:0;font-size:14.5px;text-transform:none;font-weight:600}
+h1{margin:12px 0 0;font-size:clamp(34px,4.6vw,56px);font-weight:700;letter-spacing:-.035em;line-height:1.04}
+html[lang="ar"] h1{letter-spacing:0;line-height:1.3;font-weight:600}
+.head p{margin:14px 0 0;color:var(--fg-soft);font-size:17px}
+
+/* ---- layout ---- */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(26px,4vw,56px);align-items:start;padding-bottom:80px}
+@media (max-width:940px){.cols{grid-template-columns:1fr}.preview-col{order:-1}}
+
+/* ---- form ---- */
+.field{margin-bottom:24px}
+.lab{display:block;font-size:14px;font-weight:650;margin-bottom:9px}
+.lab small{font-weight:500;color:var(--fg-mute);margin-inline-start:6px}
+.inp{width:100%;height:52px;padding:0 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);font-size:16px;transition:border-color .3s,box-shadow .3s}
+.inp:focus{outline:0;border-color:var(--purple);box-shadow:0 0 0 4px color-mix(in srgb,var(--purple) 18%,transparent)}
+.evs{display:grid;gap:10px}
+.ev{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;text-align:start;transition:border-color .3s,background .3s,transform .4s var(--ease)}
+.ev:hover{transform:translateY(-2px)}
+.ev[aria-pressed="true"]{border-color:var(--purple);background:var(--tint)}
+:root[data-theme="dark"] .ev[aria-pressed="true"],
+html:not([data-theme="light"]) .ev[aria-pressed="true"]{background:color-mix(in srgb,var(--purple) 16%,transparent)}
+.ev .dot{width:12px;height:12px;border-radius:50%;flex:none;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 22%,transparent)}
+.ev .t{flex:1;min-width:0}
+.ev .t b{display:block;font-family:var(--f-en);font-weight:700;font-size:16px;letter-spacing:-.01em}
+.ev .t small{display:block;color:var(--fg-mute);font-size:13.5px}
+.ev .past{font-size:12px;font-weight:700;padding:3px 9px;border-radius:var(--pill);background:var(--bg-soft);color:var(--fg-mute)}
+
+.photo-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.filebtn{display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 18px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--surface);font-size:15px;font-weight:600;cursor:pointer;transition:border-color .3s}
+.filebtn:hover{border-color:var(--purple)}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.rng{width:100%;accent-color:var(--purple)}
+.hint{font-size:13.5px;color:var(--fg-mute);margin-top:9px;display:flex;align-items:center;gap:7px}
+.hint svg{width:15px;height:15px;flex:none;color:var(--cyan)}
+
+/* ---- preview ---- */
+.preview-col{position:sticky;top:18px}
+.stage{border-radius:26px;overflow:hidden;box-shadow:var(--shadow);background:var(--bg-soft);aspect-ratio:4/5;position:relative}
+#card{width:100%;height:100%;display:block;touch-action:none;cursor:default}
+#card.grab{cursor:grab}#card.grabbing{cursor:grabbing}
+.stage .drag{position:absolute;inset-inline-start:14px;bottom:14px;background:rgba(15,16,21,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;padding:7px 13px;border-radius:var(--pill);font-size:12.5px;font-weight:600;pointer-events:none;opacity:0;transition:opacity .4s}
+.stage .drag.on{opacity:1}
+.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:var(--pill);font-weight:650;font-size:16px;border:0;cursor:pointer;transition:background .35s,box-shadow .35s,transform .4s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--purple);color:#fff;box-shadow:0 10px 30px -10px rgba(139,61,255,.75);flex:1}
+.btn-primary:hover{background:var(--purple-ink)}
+.btn-line{border:1.5px solid var(--line);background:transparent}
+.btn-line:hover{border-color:var(--fg)}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.note{margin-top:14px;font-size:13.5px;color:var(--fg-mute)}
+
+/* ---------- sharing ---------- */
+.share{margin-top:18px;padding-top:20px;border-top:1.5px solid var(--line)}
+.share-h{display:block;font-size:14px;font-weight:650;margin-bottom:12px}
+.share-h small{font-weight:500;color:var(--fg-mute);margin-inline-start:6px}
+.btn-share{width:100%;background:var(--fg);color:var(--bg);margin-bottom:10px}
+.btn-share:hover{background:var(--purple);color:#fff}
+.nets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.net{display:flex;align-items:center;justify-content:center;gap:9px;height:50px;border-radius:14px;
+     border:1.5px solid var(--line);background:var(--surface);font-size:14.5px;font-weight:650;
+     cursor:pointer;transition:border-color .3s,background .3s,transform .4s var(--ease)}
+.net:hover{transform:translateY(-2px)}
+.net svg{width:19px;height:19px;flex:none}
+.net.li:hover{border-color:#0a66c2;color:#0a66c2}
+.net.x:hover{border-color:var(--fg)}
+.net.ig:hover{border-color:#d946d0;color:#d946d0}
+@media (max-width:420px){.net span{display:none}.net{gap:0}}
+@media (max-width:480px){.actions{flex-direction:column}.actions .btn{width:100%}}
+
+.cap{margin-top:14px;border-radius:16px;background:var(--bg-soft);padding:14px 16px}
+.cap-h{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.cap-h span{font-size:13px;font-weight:650;color:var(--fg-mute)}
+.cap-h .copy{margin-inline-start:auto;height:34px;padding:0 14px;border-radius:var(--pill);border:0;
+             background:var(--tint);color:var(--purple-ink);font-size:13.5px;font-weight:650;cursor:pointer;transition:background .3s}
+.cap-h .copy:hover{background:var(--purple);color:#fff}
+.cap pre{margin:0;font:inherit;font-size:14.5px;line-height:1.7;color:var(--fg-soft);
+         white-space:pre-wrap;word-break:break-word;unicode-bidi:plaintext;text-align:start}
+
+.toast{position:fixed;inset-inline:16px;bottom:18px;margin-inline:auto;max-width:520px;z-index:70;
+       background:var(--night);color:#fff;padding:14px 18px;border-radius:16px;font-size:14.5px;font-weight:550;
+       text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.35);opacity:0;transform:translateY(14px);
+       pointer-events:none;transition:opacity .35s,transform .45s var(--ease)}
+.toast.on{opacity:1;transform:translateY(0)}
+.note a{color:var(--purple-ink);font-weight:650}
+.ic{width:18px;height:18px;flex:none}
+[dir="rtl"] .flip{transform:scaleX(-1)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:560px){
+  .top{height:auto;padding-block:14px;gap:10px}
+  .brandmark{font-size:15px}
+  .brandmark img{width:28px;height:28px}
+  #backBtn{display:none}                 /* the lockup already goes home */
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brandmark" href="../" aria-label="Canva Community Saudi Arabia">
+      <img src="../assets/logo.png" alt=""><span><b>Canva</b> Community <b>SA</b></span>
+    </a>
+    <span class="sp"></span>
+    <button class="ghost" id="langBtn" type="button"></button>
+    <a class="ghost" href="../" id="backBtn"></a>
+  </header>
+
+  <div class="head">
+    <span class="eyebrow" id="eyebrow"></span>
+    <h1 id="title"></h1>
+    <p id="sub"></p>
+  </div>
+
+  <div class="cols">
+    <div>
+      <div class="field">
+        <span class="lab" id="labEvent"></span>
+        <div class="evs" id="evs"></div>
+      </div>
+
+      <div class="field">
+        <label class="lab" for="nm" id="labName"></label>
+        <input class="inp" id="nm" maxlength="34" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label class="lab" for="rl" id="labRole"></label>
+        <input class="inp" id="rl" maxlength="46" autocomplete="organization-title">
+      </div>
+
+      <div class="field">
+        <span class="lab" id="labPhoto"></span>
+        <div class="photo-row">
+          <label class="filebtn" for="ph">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5m0 0L8 9m4-4 4 4M5 18.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="labPhotoBtn"></span>
+          </label>
+          <input type="file" id="ph" accept="image/*">
+          <button class="filebtn" id="clearPh" type="button" hidden></button>
+        </div>
+        <div id="zoomWrap" hidden style="margin-top:14px">
+          <label class="lab" for="zoom" id="labZoom"></label>
+          <input class="rng" type="range" id="zoom" min="100" max="260" value="100">
+        </div>
+        <p class="hint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11V8a6 6 0 1 1 12 0v3M5 11h14v9H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span id="privacy"></span>
+        </p>
+      </div>
+    </div>
+
+    <div class="preview-col">
+      <div class="stage">
+        <canvas id="card" width="1080" height="1350" role="img"></canvas>
+        <span class="drag" id="dragHint"></span>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="dl" type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="labDl"></span>
+        </button>
+        <a class="btn btn-line" id="reg" target="_blank" rel="noopener"><span id="labReg"></span>
+          <svg class="ic flip" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h17M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="share">
+        <span class="share-h" id="labShareH"></span>
+        <button class="btn btn-share" id="shareBtn" type="button" hidden>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4 4 4M5 14v5.5h14V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="labShare"></span>
+        </button>
+        <div class="nets">
+          <button class="net li" type="button" data-net="li">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9.5v8M6.5 6.5v.01M10.5 17.5v-4.5a2.5 2.5 0 0 1 5 0v4.5M10.5 9.5v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>LinkedIn</span>
+          </button>
+          <button class="net x" type="button" data-net="x">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4L5 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            <span>X</span>
+          </button>
+          <button class="net ig" type="button" data-net="ig">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+            <span>Instagram</span>
+          </button>
+        </div>
+        <div class="cap">
+          <div class="cap-h"><span id="labCap"></span><button class="copy" id="copyBtn" type="button"></button></div>
+          <pre id="capText"></pre>
+        </div>
+      </div>
+      <p class="note" id="note"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =======================================================================
+   Canva World Tour · attendee share card
+   Everything happens in this browser: the photo is read with FileReader,
+   drawn straight to a canvas, and never uploaded anywhere.
+   ======================================================================= */
+
+/* ---------- copy ---------- */
+const COPY = {
+  eyebrow:  ['Canva World Tour · Jeddah', 'Canva World Tour · جدة'],
+  title:    ['Tell everyone you’re coming.', 'عرّف الناس إنك جاي.'],
+  sub:      ['Pick your session, add your name, and get a ready card for Instagram, LinkedIn or X.',
+             'اختر لقاءك، أضف اسمك، واحصل على بطاقة جاهزة لإنستقرام أو LinkedIn أو X.'],
+  labEvent: ['Which session?', 'أي لقاء؟'],
+  labName:  ['Your name', 'اسمك'],
+  labRole:  ['Job title or company', 'مسماك الوظيفي أو شركتك'],
+  optional: ['optional', 'اختياري'],
+  labPhoto: ['Your photo', 'صورتك'],
+  photoBtn: ['Choose a photo', 'اختر صورة'],
+  photoOff: ['Remove', 'احذف الصورة'],
+  labZoom:  ['Zoom', 'التكبير'],
+  privacy:  ['Your photo stays on this device. Nothing is uploaded.', 'صورتك تبقى على جهازك، ولا يتم رفع أي شيء.'],
+  dl:       ['Download the card', 'حمّل البطاقة'],
+  reg:      ['Register on Luma', 'سجّل على Luma'],
+  drag:     ['Drag to reposition', 'اسحب لتحريك الصورة'],
+  note:     ['1080 × 1350, the Instagram post size. Tag us ', '1080 × 1350، مقاس منشور إنستقرام. ومنشنونا '],
+  namePh:   ['Write your name', 'اكتب اسمك'],
+  back:     ['Back to the site', 'رجوع للموقع'],
+  attending:['I’m attending', 'خليني أشوفكم في'],
+  attended: ['I was there', 'كنت معكم في'],
+  firstKsa: ['First time in Saudi Arabia', 'لأول مرة في السعودية'],
+  online:   ['Online', 'أونلاين'],
+  past:     ['Done', 'انتهى'],
+  me:       ['You', 'أنا'],
+  shareH:   ['Share it', 'شاركها'],
+  shareHs:  ['the caption is written for you', 'النص مكتوب لك'],
+  share:    ['Share the card', 'شارك البطاقة'],
+  capLab:   ['The caption', 'النص الجاهز'],
+  copy:     ['Copy', 'انسخ'],
+  copied:   ['Caption copied.', 'نسخنا النص.'],
+  copyFail: ['Could not copy — select the text and copy it yourself.', 'ما قدرنا ننسخ — ظلّل النص وانسخه بنفسك.'],
+  tLi:      ['Image saved and caption copied. Paste it in LinkedIn and attach the image.', 'حمّلنا الصورة ونسخنا النص. الصقه في LinkedIn وأرفق الصورة.'],
+  tX:       ['Image saved and the post is open with the text ready. Attach the image before you send.', 'حمّلنا الصورة والنص جاهز في X. أرفق الصورة قبل النشر.'],
+  tIg:      ['Image saved and caption copied. Instagram only posts from the phone app.', 'حمّلنا الصورة ونسخنا النص. إنستقرام ينشر من تطبيق الجوال بس.'],
+  tSaved:   ['Image saved and caption copied.', 'حمّلنا الصورة ونسخنا النص.']
+};
+
+/* ---------- events: the page ships a copy, the data file wins ---------- */
+let EVENTS = [
+  { slug:'branding', title:'Branding for Elites', color:'#7b2ff2', format:'online',
+    start:'2026-11-21T19:00:00+03:00', end:'2026-11-21T20:30:00+03:00',
+    venue:{en:'Online', ar:'أونلاين'}, register:'https://lu.ma/ot9xgj85' },
+  { slug:'business', title:'Canva for Business', color:'#2f7cf6', format:'inperson',
+    start:'2026-11-27T16:00:00+03:00', end:'2026-11-27T21:00:00+03:00',
+    venue:{en:'Wadi Jeddah Innovation Complex', ar:'مجمع وادي جدة للابتكار'}, register:'https://lu.ma/6yy8yxk4' },
+  { slug:'campaign', title:'Campaigns That Hit', color:'#ff3b4b', format:'inperson',
+    start:'2026-11-30T18:00:00+03:00', end:'2026-11-30T21:00:00+03:00',
+    venue:{en:'White Spaces · Randa Tower, Jeddah', ar:'White Spaces · برج رندة، جدة'}, register:'https://lu.ma/36tt6ifu' }
+];
+
+/* ---------- state ---------- */
+let LANG = 'ar';
+try { const v = localStorage.getItem('cc-lang'); if (v === 'en' || v === 'ar') LANG = v; } catch(e){}
+const S = { slug:null, name:'', role:'', img:null, zoom:1, ox:0, oy:0 };
+let LOCKUP = null, LOGO = null, READY = false;   /* LOGO: the official white community lockup */
+
+const $ = s => document.querySelector(s);
+const T = k => COPY[k][LANG === 'ar' ? 1 : 0];
+const AR = /[؀-ۿݐ-ݿ]/;
+const isAr = s => AR.test(s || '');
+const ev = () => EVENTS.find(e => e.slug === S.slug) || EVENTS[0];
+const isPast = e => e.end && new Date(e.end) < new Date();
+
+const fmtDate = e => new Intl.DateTimeFormat(LANG === 'ar' ? 'ar-SA-u-ca-gregory-nu-latn' : 'en-GB',
+  { weekday:'long', day:'numeric', month:'long', timeZone:'Asia/Riyadh' }).format(new Date(e.start));
+const fmtShort = e => new Intl.DateTimeFormat(LANG === 'ar' ? 'ar-SA-u-ca-gregory-nu-latn' : 'en-GB',
+  { day:'numeric', month:'short', timeZone:'Asia/Riyadh' }).format(new Date(e.start));
+
+/* ---------- canvas helpers ---------- */
+const W = 1080, CH = 1350;
+const ctx = $('#card').getContext('2d');
+
+function face(px, weight, arabic){
+  return `${weight} ${px}px ${arabic ? '"Graphik Arabic","Canva Sans Display"' : '"Canva Sans Display","Graphik Arabic"'}, sans-serif`;
+}
+function setText(px, weight, arabic, align){
+  ctx.font = face(px, weight, arabic);
+  ctx.direction = arabic ? 'rtl' : 'ltr';
+  ctx.textAlign = align;
+  ctx.textBaseline = 'alphabetic';
+}
+const SPARK = new Path2D('M12 1.5c.7 5.2 2.8 8.3 10.5 10.5-7.7 2.2-9.8 5.3-10.5 10.5-.7-5.2-2.8-8.3-10.5-10.5C9.2 9.8 11.3 6.7 12 1.5z');
+function spark(x, y, size, alpha){
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(size / 24, size / 24); ctx.translate(-12, -12);
+  ctx.globalAlpha = alpha; ctx.fillStyle = '#fff'; ctx.fill(SPARK);
+  ctx.restore();
+}
+function roundRect(x, y, w, h, r){
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+function fitText(text, px, weight, arabic, maxW, minPx){
+  let size = px;
+  while (size > minPx) {
+    ctx.font = face(size, weight, arabic);
+    if (ctx.measureText(text).width <= maxW) break;
+    size -= 2;
+  }
+  return size;
+}
+
+/* ---------- the card ---------- */
+function cursorTag(x, y, label, col, mirror){
+  const ARROW = new Path2D('M4 2.5l6.8 18.2 2.5-7.7 7.7-2.6z');
+  const k = 38 / 24;
+  ctx.save();
+  ctx.translate(x, y);
+  if (mirror) ctx.scale(-1, 1);
+  ctx.scale(k, k);
+  ctx.fillStyle = col; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.4; ctx.lineJoin = 'round';
+  ctx.fill(ARROW); ctx.stroke(ARROW);
+  ctx.restore();
+
+  const ar = isAr(label);
+  setText(28, ar ? 600 : 700, ar, 'center');
+  const w = ctx.measureText(label).width + 44, h = 52;
+  const bx = mirror ? x - 24 - w : x + 24;
+  ctx.save();
+  ctx.shadowColor = 'rgba(16,24,64,.28)'; ctx.shadowBlur = 20; ctx.shadowOffsetY = 7;
+  ctx.fillStyle = col;
+  roundRect(bx, y + 28, w, h, 15);
+  ctx.fill();
+  ctx.restore();
+  ctx.fillStyle = '#fff';
+  setText(28, ar ? 600 : 700, ar, 'center');
+  ctx.fillText(label, bx + w / 2, y + 28 + 35);
+}
+
+function draw(){
+  if (!READY) return;
+  const e = ev(), rtl = LANG === 'ar', mid = W / 2;
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, W, CH);
+
+  /* white at the top, the tour gradient underneath */
+  const g = ctx.createLinearGradient(0, 0, 0, CH);
+  g.addColorStop(0, '#ffffff');
+  g.addColorStop(.42, '#ffffff');
+  g.addColorStop(.50, '#e1f9fd');
+  g.addColorStop(.58, '#a3e9f4');
+  g.addColorStop(.66, '#55c6d7');
+  g.addColorStop(.73, '#2a94c6');
+  g.addColorStop(.80, '#3966d9');
+  g.addColorStop(.88, '#5143ef');
+  g.addColorStop(1, '#722ffb');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, CH);
+
+  /* the real Canva World Tour lockup, centred */
+  if (LOCKUP) {
+    const lh = 56, lw = lh * (LOCKUP.width / LOCKUP.height);
+    ctx.drawImage(LOCKUP, mid - lw / 2, 92, lw, lh);
+  }
+
+  /* eyebrow */
+  const eb = T('firstKsa'), ebAr = isAr(eb);
+  setText(25, 600, ebAr, 'center');
+  if (!ebAr) try { ctx.letterSpacing = '0.16em'; } catch(_){}
+  ctx.fillStyle = '#404f6d';
+  ctx.fillText(ebAr ? eb : eb.toUpperCase(), mid, 234);
+  try { ctx.letterSpacing = '0px'; } catch(_){}
+
+  /* headline */
+  const head = isPast(e) ? T('attended') : T('attending');
+  const headAr = isAr(head);
+  const hs = fitText(head, 112, headAr ? 600 : 700, headAr, W - 150, 60);
+  setText(hs, headAr ? 600 : 700, headAr, 'center');
+  ctx.fillStyle = '#3c3ef0';
+  ctx.fillText(head, mid, 372);
+  const headInk = 372 + ctx.measureText(head).actualBoundingBoxDescent;
+
+  /* size the event title now, so the photo can be centred on what is really left */
+  const ts = fitText(e.title, 56, 700, false, W - 150, 32);
+  setText(ts, 700, false, 'center');
+  const titleInk = 975 - ctx.measureText(e.title).actualBoundingBoxAscent;
+
+  /* ---- the person, optically centred between the headline and the event ---- */
+  const CX = mid;
+  const R = Math.max(150, Math.min(212, Math.floor((titleInk - headInk) / 2) - 52));
+  const CY = Math.round((headInk + titleInk) / 2);
+  let rg = ctx.createRadialGradient(CX, CY, R * .55, CX, CY, R * 1.5);
+  rg.addColorStop(0, 'rgba(255,255,255,.7)');
+  rg.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = rg;
+  ctx.beginPath(); ctx.arc(CX, CY, R * 1.5, 0, Math.PI * 2); ctx.fill();
+
+  ctx.save();
+  ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.closePath();
+  const dg = ctx.createLinearGradient(CX - R, CY - R, CX + R, CY + R);
+  dg.addColorStop(0, '#d9f6fc'); dg.addColorStop(.52, '#ffffff'); dg.addColorStop(1, '#cfeefb');
+  ctx.fillStyle = dg; ctx.fill();
+  ctx.clip();
+  if (S.img) {
+    const im = S.img;
+    const base = (R * 2) / Math.min(im.width, im.height);
+    const sc = base * S.zoom;
+    const dw = im.width * sc, dh = im.height * sc;
+    ctx.drawImage(im, CX - dw / 2 + S.ox, CY - dh / 2 + S.oy, dw, dh);
+  } else {
+    ctx.fillStyle = 'rgba(255,255,255,.96)';
+    ctx.beginPath(); ctx.arc(CX, CY - 46, 54, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(CX, CY + 128, 108, Math.PI, 0); ctx.fill();
+  }
+  ctx.restore();
+
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 7;
+  ctx.beginPath(); ctx.arc(CX, CY + 2, R + 3, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+
+  cursorTag(rtl ? CX - R * .62 : CX + R * .62, CY + R * .62, T('me'), '#ff6105', rtl);
+
+  /* ---- the event ---- */
+  setText(ts, 700, false, 'center');
+  ctx.fillStyle = '#fff';
+  ctx.fillText(e.title, mid, 975);
+
+  const venue = e.format === 'online' ? T('online') : (LANG === 'ar' ? e.venue.ar : e.venue.en);
+  const meta = fmtDate(e) + '  ·  ' + venue;
+  const ms = fitText(meta, 30, 500, isAr(meta), W - 150, 20);
+  setText(ms, 500, isAr(meta), 'center');
+  ctx.fillStyle = 'rgba(255,255,255,.9)';
+  ctx.fillText(meta, mid, 1026);
+
+  /* ---- the name, on a white pill ---- */
+  const typed = S.name.trim();
+  const name = typed || T('namePh');
+  const nameAr = isAr(name);
+  const ns = fitText(name, 44, nameAr ? 600 : 700, nameAr, W - 300, 26);
+  setText(ns, nameAr ? 600 : 700, nameAr, 'center');
+  const pw = Math.min(W - 150, ctx.measureText(name).width + 96), ph = 76;
+  ctx.save();
+  ctx.shadowColor = 'rgba(16,24,64,.22)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 10;
+  ctx.fillStyle = '#fff';
+  roundRect(mid - pw / 2, 1062, pw, ph, ph / 2);
+  ctx.fill();
+  ctx.restore();
+  setText(ns, nameAr ? 600 : 700, nameAr, 'center');
+  ctx.fillStyle = typed ? '#3c3ef0' : 'rgba(60,62,240,.45)';
+  ctx.fillText(name, mid, 1062 + 51);
+
+  if (S.role.trim()) {
+    const roleAr = isAr(S.role);
+    const rs = fitText(S.role.trim(), 29, 500, roleAr, W - 180, 19);
+    setText(rs, 500, roleAr, 'center');
+    ctx.fillStyle = 'rgba(255,255,255,.88)';
+    ctx.fillText(S.role.trim(), mid, 1176);
+  }
+
+  /* ---- who made it: the official Canva Community Saudi Arabia lockup ---- */
+  if (LOGO) {
+    const lw = 430, lh = lw * (LOGO.naturalHeight / LOGO.naturalWidth);
+    ctx.drawImage(LOGO, mid - lw / 2, 1240, lw, lh);
+  }
+
+  setText(23, 600, false, 'center');
+  ctx.direction = 'ltr';
+  ctx.fillStyle = 'rgba(255,255,255,.62)';
+  ctx.fillText('@canvacommunitysa', mid, 1305);
+
+  const cap = document.getElementById('capText');
+  if (cap) cap.textContent = caption();
+}
+/* ---------- UI ---------- */
+function paintCopy(){
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
+  $('#langBtn').textContent = LANG === 'ar' ? 'English' : 'عربي';
+  $('#backBtn').textContent = T('back');
+  $('#eyebrow').textContent = T('eyebrow');
+  $('#title').textContent = T('title');
+  $('#sub').textContent = T('sub');
+  $('#labEvent').textContent = T('labEvent');
+  $('#labName').textContent = T('labName');
+  $('#labRole').innerHTML = T('labRole') + ' <small>' + T('optional') + '</small>';
+  $('#labPhoto').innerHTML = T('labPhoto') + ' <small>' + T('optional') + '</small>';
+  $('#labPhotoBtn').textContent = T('photoBtn');
+  $('#clearPh').textContent = T('photoOff');
+  $('#labZoom').textContent = T('labZoom');
+  $('#privacy').textContent = T('privacy');
+  $('#labDl').textContent = T('dl');
+  $('#labReg').textContent = T('reg');
+  $('#dragHint').textContent = T('drag');
+  $('#nm').placeholder = T('namePh');
+  $('#note').innerHTML = T('note') + '<a href="https://www.instagram.com/canvacommunitysa/" target="_blank" rel="noopener">@canvacommunitysa</a>';
+  $('#labShareH').innerHTML = T('shareH') + ' <small>' + T('shareHs') + '</small>';
+  $('#labShare').textContent = T('share');
+  $('#labCap').textContent = T('capLab');
+  $('#copyBtn').textContent = T('copy');
+  $('#shareBtn').hidden = !CAN_SHARE_FILES;
+  $('#reg').href = ev().register || '#';
+  paintEvents();
+}
+function paintEvents(){
+  $('#evs').innerHTML = EVENTS.map(e => `
+    <button class="ev" type="button" data-slug="${e.slug}" aria-pressed="${e.slug === S.slug}">
+      <span class="dot" style="background:${e.color};color:${e.color}"></span>
+      <span class="t"><b>${e.title}</b><small>${fmtShort(e)} · ${e.format === 'online' ? T('online') : (LANG === 'ar' ? e.venue.ar : e.venue.en)}</small></span>
+      ${isPast(e) ? `<span class="past">${T('past')}</span>` : ''}
+    </button>`).join('');
+}
+
+function pick(slug){
+  S.slug = slug;
+  $('#reg').href = ev().register || '#';
+  paintEvents();
+  draw();
+}
+
+/* photo */
+$('#ph').addEventListener('change', ev2 => {
+  const f = ev2.target.files && ev2.target.files[0];
+  if (!f) return;
+  const fr = new FileReader();
+  fr.onload = () => {
+    const im = new Image();
+    im.onload = () => {
+      S.img = im; S.zoom = 1; S.ox = 0; S.oy = 0;
+      $('#zoom').value = 100;
+      $('#zoomWrap').hidden = false;
+      $('#clearPh').hidden = false;
+      $('#card').classList.add('grab');
+      $('#dragHint').classList.add('on');
+      draw();
+    };
+    im.src = fr.result;                 // stays in this tab, never sent anywhere
+  };
+  fr.readAsDataURL(f);
+});
+$('#clearPh').addEventListener('click', () => {
+  S.img = null; $('#ph').value = '';
+  $('#zoomWrap').hidden = true; $('#clearPh').hidden = true;
+  $('#card').classList.remove('grab');
+  $('#dragHint').classList.remove('on');
+  draw();
+});
+$('#zoom').addEventListener('input', e => { S.zoom = +e.target.value / 100; draw(); });
+
+/* drag to reposition, in card pixels */
+let dragging = false, lastX = 0, lastY = 0;
+const cardEl = $('#card');
+cardEl.addEventListener('pointerdown', e => {
+  if (!S.img) return;
+  dragging = true; lastX = e.clientX; lastY = e.clientY;
+  cardEl.setPointerCapture(e.pointerId);
+  cardEl.classList.add('grabbing');
+});
+cardEl.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const k = W / cardEl.getBoundingClientRect().width;
+  S.ox += (e.clientX - lastX) * k;
+  S.oy += (e.clientY - lastY) * k;
+  lastX = e.clientX; lastY = e.clientY;
+  draw();
+});
+['pointerup','pointercancel'].forEach(t => cardEl.addEventListener(t, () => {
+  dragging = false; cardEl.classList.remove('grabbing');
+}));
+
+/* text */
+$('#nm').addEventListener('input', e => { S.name = e.target.value; draw(); });
+$('#rl').addEventListener('input', e => { S.role = e.target.value; draw(); });
+$('#evs').addEventListener('click', e => {
+  const b = e.target.closest('.ev'); if (b) pick(b.dataset.slug);
+});
+$('#langBtn').addEventListener('click', () => {
+  LANG = LANG === 'ar' ? 'en' : 'ar';
+  try { localStorage.setItem('cc-lang', LANG); } catch(e){}
+  paintCopy(); draw();
+});
+
+/* ---------- the card as a file ---------- */
+const fileName = () => {
+  const who = (S.name.trim() || 'canva-community').replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').toLowerCase();
+  return `cwt-${ev().slug}-${who}.png`;
+};
+const pngBlob = () => new Promise(r => cardEl.toBlob(r, 'image/png'));
+function saveBlob(b){
+  const url = URL.createObjectURL(b);
+  const a = document.createElement('a');
+  a.href = url; a.download = fileName();
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+/* ---------- the caption, written so the post markets the community ---------- */
+function siteUrl(){
+  const o = location.origin;
+  return /^https?:/.test(o) && !/localhost|127\.0\.0\.1|\[::1\]/.test(o) ? o + '/' : '';
+}
+function caption(){
+  const e = ev(), ar = LANG === 'ar', past = isPast(e);
+  const venue = e.format === 'online' ? T('online') : (ar ? e.venue.ar : e.venue.en);
+  const when = fmtDate(e) + ' \u00b7 ' + venue;
+  const next = EVENTS.filter(x => !isPast(x) && x.slug !== e.slug)[0];
+  const site = siteUrl();
+  const lines = [];
+
+  if (ar) {
+    lines.push(past
+      ? `\u0633\u0639\u064a\u062f \u0625\u0646\u064a \u062d\u0636\u0631\u062a \u0641\u0639\u0627\u0644\u064a\u0629 ${e.title}\u060c \u0645\u0646 \u062c\u0648\u0644\u0629 Canva World Tour\u060c \u0648\u0644\u0623\u0648\u0644 \u0645\u0631\u0629 \u0641\u064a \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629.`
+      : `\u0633\u0639\u064a\u062f \u0625\u0646\u064a \u0631\u0627\u062d \u0623\u062d\u0636\u0631 \u0641\u0639\u0627\u0644\u064a\u0629 ${e.title}\u060c \u0645\u0646 \u062c\u0648\u0644\u0629 Canva World Tour\u060c \u0648\u0644\u0623\u0648\u0644 \u0645\u0631\u0629 \u0641\u064a \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629.`);
+    lines.push('');
+    lines.push(when);
+    lines.push('');
+    if (!past && e.register) {
+      lines.push(`\u0648\u0627\u0646\u062a \u0643\u0645\u0627\u0646 \u0641\u0631\u0635\u062a\u0643 \u062a\u0633\u062c\u0644 \u0627\u0644\u0622\u0646: ${e.register}`);
+    } else if (next && next.register) {
+      lines.push(`\u0648\u0627\u0646\u062a \u0643\u0645\u0627\u0646 \u0641\u0631\u0635\u062a\u0643 \u062a\u0633\u062c\u0644 \u0641\u064a ${next.title}: ${next.register}`);
+    }
+    if (site) lines.push(`\u0643\u0644 \u0627\u0644\u0644\u0642\u0627\u0621\u0627\u062a: ${site}`);
+    lines.push('');
+    lines.push('\u0645\u062c\u062a\u0645\u0639 Canva \u0641\u064a \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629 \u00b7 @canvacommunitysa');
+  } else {
+    lines.push(past
+      ? `Glad I was at ${e.title}, part of Canva World Tour, in Saudi Arabia for the first time.`
+      : `Glad to be attending ${e.title}, part of Canva World Tour, in Saudi Arabia for the first time.`);
+    lines.push('');
+    lines.push(when);
+    lines.push('');
+    if (!past && e.register) lines.push(`Your turn \u2014 register now: ${e.register}`);
+    else if (next && next.register) lines.push(`Your turn \u2014 register for ${next.title}: ${next.register}`);
+    if (site) lines.push(`All the sessions: ${site}`);
+    lines.push('');
+    lines.push('Canva Community Saudi Arabia \u00b7 @canvacommunitysa');
+  }
+  lines.push('#CanvaWorldTour #CanvaCommunitySA');
+  return lines.join('\n');
+}
+
+/* ---------- small helpers ---------- */
+let toastT;
+function toast(msg){
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('on'), 5200);
+}
+async function copyText(txt){
+  try { await navigator.clipboard.writeText(txt); return true; } catch(_){}
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0;top:0';
+    document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove(); return ok;
+  } catch(_) { return false; }
+}
+
+/* phones and tablets can hand the picture straight to Instagram, LinkedIn, X */
+const CAN_SHARE_FILES = (() => {
+  try {
+    return !!(navigator.canShare && navigator.canShare({
+      files: [new File([new Blob(['x'], {type:'image/png'})], 't.png', {type:'image/png'})]
+    }));
+  } catch(_) { return false; }
+})();
+
+/* ---------- actions ---------- */
+$('#dl').addEventListener('click', async () => {
+  const b = await pngBlob(); if (b) saveBlob(b);
+});
+
+$('#shareBtn').addEventListener('click', async () => {
+  const b = await pngBlob(); if (!b) return;
+  const f = new File([b], fileName(), { type:'image/png' });
+  try {
+    await navigator.share({ files:[f], text: caption() });
+  } catch(err) {
+    if (err && err.name === 'AbortError') return;
+    saveBlob(b); await copyText(caption()); toast(T('tSaved'));
+  }
+});
+
+document.querySelector('.nets').addEventListener('click', async e2 => {
+  const btn = e2.target.closest('.net'); if (!btn) return;
+  const net = btn.dataset.net, cap = caption();
+  const b = await pngBlob(); if (b) saveBlob(b);
+  await copyText(cap);
+  if (net === 'x') {
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(cap), '_blank', 'noopener');
+    toast(T('tX'));
+  } else if (net === 'li') {
+    window.open('https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent(cap), '_blank', 'noopener');
+    toast(T('tLi'));
+  } else {
+    window.open('https://www.instagram.com/', '_blank', 'noopener');
+    toast(T('tIg'));
+  }
+});
+
+$('#copyBtn').addEventListener('click', async () => {
+  toast(await copyText(caption()) ? T('copied') : T('copyFail'));
+});
+
+/* ---------- boot ---------- */
+function loadImg(src){
+  return new Promise(res => {
+    const i = new Image();
+    i.onload = () => res(i);
+    i.onerror = () => res(null);
+    i.src = src;
+  });
+}
+(async function init(){
+  // the events the site is actually showing
+  try {
+    const r = await fetch('../data/site-data.json', { cache:'no-store' });
+    if (r.ok) {
+      const d = await r.json();
+      if (d && Array.isArray(d.events) && d.events.length) {
+        EVENTS = d.events.map(e => ({
+          slug:e.slug, title:e.title, color:e.color || '#8b3dff', format:e.format,
+          start:e.start, end:e.end, venue:e.venue, register:e.register
+        }));
+      }
+    }
+  } catch(_){}
+  EVENTS.sort((a, b) => new Date(a.start) - new Date(b.start));
+  S.slug = (EVENTS.find(e => !isPast(e)) || EVENTS[0]).slug;
+
+  [LOCKUP, LOGO] = await Promise.all([
+    loadImg('../assets/cwt-lockup.png'),
+    loadImg('../assets/cc-logo-long.svg')      // Yasser's official lockup, white paths
+  ]);
+
+  // the Arabic will fall back to Tahoma on canvas unless the faces are really loaded
+  const want = [
+    '600 132px "Graphik Arabic"', '600 58px "Graphik Arabic"', '500 33px "Graphik Arabic"',
+    '600 27px "Graphik Arabic"', '600 25px "Graphik Arabic"',
+    '700 132px "Canva Sans Display"', '700 70px "Canva Sans Display"',
+    '650 27px "Canva Sans Display"', '600 26px "Canva Sans Display"', '500 31px "Canva Sans Display"'
+  ];
+  try {
+    await Promise.all(want.map(f => document.fonts.load(f, 'خليني أشوفكم Canva 2026')));
+    await document.fonts.ready;
+  } catch(_){}
+
+  READY = true;
+  paintCopy();
+  draw();
+})();
+</script>
+</body>
+</html>
