@@ -2,9 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=0449a055-9bee-4d06-b442-3948c7852d95
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>خليني أشوفكم · Canva Community Saudi Arabia</title>
 <meta name="description" content="Make your own Canva World Tour share card and post that you are attending. اصنع بطاقتك وشارك إنك حاضر.">
@@ -13,243 +10,284 @@
 <style>
 :root{
   --bg:#ffffff; --bg-soft:#f3f4f7; --surface:#ffffff; --fg:#0f1015; --fg-soft:#404f6d; --fg-mute:#6b7488;
-  --line:#e3e5ec; --purple:#8b3dff; --purple-ink:#7d2ae8; --tint:#efe5ff; --cyan:#00c4cc; --electric:#6420ff;
-  --night:#0f1015; --pill:9999px; --ease:cubic-bezier(.22,1,.36,1);
+  --line:#e3e5ec; --purple:#8b3dff; --purple-ink:#7d2ae8; --tint:#efe5ff; --cyan:#00c4cc;
+  --night:#0f1015; --pill:9999px;
   --f-en:"Canva Sans Display",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --f-ar:"Graphik Arabic","Canva Sans Display",Tahoma,sans-serif;
-  --shadow:0 24px 48px rgba(24,44,89,.14);
+  --shadow:0 18px 40px rgba(24,44,89,.14);
+  --top:60px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0c0d12; --bg-soft:#15161e; --surface:#181922; --fg:#f4f5f8; --fg-soft:#b9bfce; --fg-mute:#8f97ab;
   --line:#282a37; --purple:#a77bff; --purple-ink:#b48dff; --tint:#251b40;
-  --shadow:0 24px 48px rgba(0,0,0,.45); color-scheme:dark}}
+  --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0c0d12; --bg-soft:#15161e; --surface:#181922; --fg:#f4f5f8; --fg-soft:#b9bfce; --fg-mute:#8f97ab;
   --line:#282a37; --purple:#a77bff; --purple-ink:#b48dff; --tint:#251b40;
-  --shadow:0 24px 48px rgba(0,0,0,.45); color-scheme:dark}
+  --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-en);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-html[lang="ar"] body{font-family:var(--f-ar);line-height:1.75}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-en);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+html[lang="ar"] body{font-family:var(--f-ar);line-height:1.6}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit;color:inherit}
-:focus-visible{outline:2.5px solid var(--purple);outline-offset:3px;border-radius:8px}
-.wrap{max-width:1240px;margin-inline:auto;padding-inline:max(18px,env(safe-area-inset-left,0px))}
+:focus-visible{outline:2.5px solid var(--purple);outline-offset:2px;border-radius:8px}
+.ic{width:18px;height:18px;flex:none}
+[dir="rtl"] .flip{transform:scaleX(-1)}
 
 /* ---- top bar ---- */
-.top{display:flex;align-items:center;gap:16px;height:74px}
-.brandmark{display:inline-flex;align-items:center;gap:11px;font-family:var(--f-en);font-size:17px;letter-spacing:-.02em;direction:ltr;white-space:nowrap}
-.brandmark img{width:32px;height:32px;border-radius:9px}
-.brandmark b{font-weight:800}.brandmark span{font-weight:500;opacity:.9}
+.top{display:flex;align-items:center;gap:10px;height:var(--top);padding-inline:max(16px,env(safe-area-inset-left,0px));max-width:1280px;margin-inline:auto}
+.brandmark{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-en);font-size:15px;letter-spacing:-.02em;direction:ltr;white-space:nowrap}
+.brandmark img{width:28px;height:28px;border-radius:8px}
+.brandmark b{font-weight:800}.brandmark span{font-weight:500}
 .top .sp{margin-inline-start:auto}
-.ghost{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--pill);border:0;background:var(--bg-soft);font-size:14.5px;font-weight:600;cursor:pointer;transition:background .3s}
+.ghost{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:var(--pill);border:0;background:var(--bg-soft);font-size:13.5px;font-weight:600;cursor:pointer}
 .ghost:hover{background:var(--tint);color:var(--purple-ink)}
 
-/* ---- head ---- */
-.head{padding-block:clamp(14px,3vw,34px) clamp(22px,3vw,34px);max-width:46ch}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-ink)}
-html[lang="ar"] .eyebrow{letter-spacing:0;font-size:14.5px;text-transform:none;font-weight:600}
-h1{margin:12px 0 0;font-size:clamp(34px,4.6vw,56px);font-weight:700;letter-spacing:-.035em;line-height:1.04}
-html[lang="ar"] h1{letter-spacing:0;line-height:1.3;font-weight:600}
-.head p{margin:14px 0 0;color:var(--fg-soft);font-size:17px}
+/* ---- app: one screen on desktop ---- */
+.app{max-width:1280px;margin-inline:auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 16px;
+     display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:start}
+.panel{display:flex;flex-direction:column;gap:14px;min-width:0}
+.preview-col{display:flex;flex-direction:column;align-items:center}
+.stage{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:var(--bg-soft);
+       aspect-ratio:4/5;height:calc(100vh - var(--top) - 20px);height:calc(100dvh - var(--top) - 20px);max-height:860px;min-height:380px}
+#card{width:100%;height:100%;display:block;touch-action:none}
+#card.grab{cursor:grab}#card.grabbing{cursor:grabbing}
+.stage .drag{position:absolute;inset-inline-start:12px;bottom:12px;background:rgba(15,16,21,.62);color:#fff;padding:6px 12px;border-radius:var(--pill);font-size:12px;font-weight:600;pointer-events:none;opacity:0;transition:opacity .3s}
+.stage .drag.on{opacity:1}
+.stage .addph{position:absolute;top:10px;inset-inline-end:10px;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:var(--pill);border:0;background:rgba(15,16,21,.72);color:#fff;font-size:12.5px;font-weight:650;cursor:pointer}
+.stage .addph .ic{width:15px;height:15px}
 
-/* ---- layout ---- */
-.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(26px,4vw,56px);align-items:start;padding-bottom:80px}
-@media (max-width:940px){.cols{grid-template-columns:1fr}.preview-col{order:-1}}
+/* ---- heading ---- */
+.head h1{margin:0;font-size:clamp(22px,2.2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.2}
+html[lang="ar"] .head h1{letter-spacing:0;font-weight:600;line-height:1.35}
+.head p{margin:4px 0 0;color:var(--fg-mute);font-size:14px}
+.eyebrow{display:block;font-size:12.5px;font-weight:700;color:var(--purple-ink);margin-bottom:4px}
 
-/* ---- form ---- */
-.field{margin-bottom:24px}
-.lab{display:block;font-size:14px;font-weight:650;margin-bottom:9px}
-.lab small{font-weight:500;color:var(--fg-mute);margin-inline-start:6px}
-.inp{width:100%;height:52px;padding:0 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);font-size:16px;transition:border-color .3s,box-shadow .3s}
-.inp:focus{outline:0;border-color:var(--purple);box-shadow:0 0 0 4px color-mix(in srgb,var(--purple) 18%,transparent)}
-.evs{display:grid;gap:10px}
-.ev{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;text-align:start;transition:border-color .3s,background .3s,transform .4s var(--ease)}
-.ev:hover{transform:translateY(-2px)}
+/* ---- steps ---- */
+.step{display:flex;flex-direction:column;gap:8px}
+.lab{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:650;color:var(--fg-soft)}
+.lab .n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--purple);color:#fff;font-size:11.5px;font-weight:700;font-family:var(--f-en)}
+.lab small{font-weight:500;color:var(--fg-mute)}
+
+.evs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ev{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 12px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;text-align:start;min-width:0;position:relative;transition:border-color .2s,background .2s}
 .ev[aria-pressed="true"]{border-color:var(--purple);background:var(--tint)}
 :root[data-theme="dark"] .ev[aria-pressed="true"],
 html:not([data-theme="light"]) .ev[aria-pressed="true"]{background:color-mix(in srgb,var(--purple) 16%,transparent)}
-.ev .dot{width:12px;height:12px;border-radius:50%;flex:none;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 22%,transparent)}
-.ev .t{flex:1;min-width:0}
-.ev .t b{display:block;font-family:var(--f-en);font-weight:700;font-size:16px;letter-spacing:-.01em}
-.ev .t small{display:block;color:var(--fg-mute);font-size:13.5px}
-.ev .past{font-size:12px;font-weight:700;padding:3px 9px;border-radius:var(--pill);background:var(--bg-soft);color:var(--fg-mute)}
+.ev b{display:flex;align-items:center;gap:7px;font-family:var(--f-en);font-weight:700;font-size:13.5px;letter-spacing:-.01em;line-height:1.25;max-width:100%}
+.ev b span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;unicode-bidi:plaintext}
+.ev .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.ev small{display:block;color:var(--fg-mute);font-size:12px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.ev .past{display:inline-block;margin-inline-start:4px;font-size:10.5px;font-weight:700;padding:0 6px;border-radius:var(--pill);background:var(--bg-soft);color:var(--fg-mute);vertical-align:1px}
+.ev .venue{}
 
-.photo-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.filebtn{display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 18px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--surface);font-size:15px;font-weight:600;cursor:pointer;transition:border-color .3s}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.inp{width:100%;height:46px;padding:0 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font-size:16px;transition:border-color .2s}
+.inp:focus{outline:0;border-color:var(--purple)}
+
+.photo-row{display:flex;align-items:center;gap:8px}
+.filebtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--surface);font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
 .filebtn:hover{border-color:var(--purple)}
+.filebtn.x{padding:0 12px;color:var(--fg-mute)}
 input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.rng{width:100%;accent-color:var(--purple)}
-.hint{font-size:13.5px;color:var(--fg-mute);margin-top:9px;display:flex;align-items:center;gap:7px}
-.hint svg{width:15px;height:15px;flex:none;color:var(--cyan)}
+.zoom{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+.zoom svg{width:16px;height:16px;flex:none;color:var(--fg-mute)}
+.rng{flex:1;min-width:0;accent-color:var(--purple);direction:ltr}
+.hint{font-size:12px;color:var(--fg-mute);margin:0;display:flex;align-items:center;gap:6px}
+.hint svg{width:13px;height:13px;flex:none;color:var(--cyan)}
 
-/* ---- preview ---- */
-.preview-col{position:sticky;top:18px}
-.stage{border-radius:26px;overflow:hidden;box-shadow:var(--shadow);background:var(--bg-soft);aspect-ratio:4/5;position:relative}
-#card{width:100%;height:100%;display:block;touch-action:none;cursor:default}
-#card.grab{cursor:grab}#card.grabbing{cursor:grabbing}
-.stage .drag{position:absolute;inset-inline-start:14px;bottom:14px;background:rgba(15,16,21,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;padding:7px 13px;border-radius:var(--pill);font-size:12.5px;font-weight:600;pointer-events:none;opacity:0;transition:opacity .4s}
-.stage .drag.on{opacity:1}
-.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:var(--pill);font-weight:650;font-size:16px;border:0;cursor:pointer;transition:background .35s,box-shadow .35s,transform .4s var(--ease)}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--purple);color:#fff;box-shadow:0 10px 30px -10px rgba(139,61,255,.75);flex:1}
+/* ---- actions ---- */
+.actions{display:flex;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 20px;border-radius:var(--pill);font-weight:650;font-size:15px;border:0;cursor:pointer;white-space:nowrap;transition:background .2s}
+.btn-primary{background:var(--purple);color:#fff;flex:1}
 .btn-primary:hover{background:var(--purple-ink)}
-.btn-line{border:1.5px solid var(--line);background:transparent}
-.btn-line:hover{border-color:var(--fg)}
-.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
-.note{margin-top:14px;font-size:13.5px;color:var(--fg-mute)}
-
-/* ---------- sharing ---------- */
-.share{margin-top:18px;padding-top:20px;border-top:1.5px solid var(--line)}
-.share-h{display:block;font-size:14px;font-weight:650;margin-bottom:12px}
-.share-h small{font-weight:500;color:var(--fg-mute);margin-inline-start:6px}
-.btn-share{width:100%;background:var(--fg);color:var(--bg);margin-bottom:10px}
-.btn-share:hover{background:var(--purple);color:#fff}
-.nets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.net{display:flex;align-items:center;justify-content:center;gap:9px;height:50px;border-radius:14px;
-     border:1.5px solid var(--line);background:var(--surface);font-size:14.5px;font-weight:650;
-     cursor:pointer;transition:border-color .3s,background .3s,transform .4s var(--ease)}
-.net:hover{transform:translateY(-2px)}
-.net svg{width:19px;height:19px;flex:none}
+.btn-share{background:var(--fg);color:var(--bg);flex:1}
+.nets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.net{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font-size:13.5px;font-weight:650;cursor:pointer;transition:border-color .2s,color .2s}
+.net svg{width:18px;height:18px;flex:none}
 .net.li:hover{border-color:#0a66c2;color:#0a66c2}
 .net.x:hover{border-color:var(--fg)}
 .net.ig:hover{border-color:#d946d0;color:#d946d0}
-@media (max-width:420px){.net span{display:none}.net{gap:0}}
-@media (max-width:480px){.actions{flex-direction:column}.actions .btn{width:100%}}
+.share-h{font-size:12.5px;color:var(--fg-mute);margin:0}
 
-.cap{margin-top:14px;border-radius:16px;background:var(--bg-soft);padding:14px 16px}
-.cap-h{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.cap-h span{font-size:13px;font-weight:650;color:var(--fg-mute)}
-.cap-h .copy{margin-inline-start:auto;height:34px;padding:0 14px;border-radius:var(--pill);border:0;
-             background:var(--tint);color:var(--purple-ink);font-size:13.5px;font-weight:650;cursor:pointer;transition:background .3s}
-.cap-h .copy:hover{background:var(--purple);color:#fff}
-.cap pre{margin:0;font:inherit;font-size:14.5px;line-height:1.7;color:var(--fg-soft);
-         white-space:pre-wrap;word-break:break-word;unicode-bidi:plaintext;text-align:start}
+.cap{border-radius:12px;background:var(--bg-soft)}
+.cap summary{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;list-style:none;font-size:13px;font-weight:650;color:var(--fg-soft)}
+.cap summary::-webkit-details-marker{display:none}
+.cap summary .chev{width:14px;height:14px;transition:transform .2s}
+.cap[open] summary .chev{transform:rotate(180deg)}
+.cap .copy{margin-inline-start:auto;height:30px;padding:0 12px;border-radius:var(--pill);border:0;background:var(--tint);color:var(--purple-ink);font-size:12.5px;font-weight:650;cursor:pointer}
+.cap pre{margin:0;padding:0 14px 12px;font:inherit;font-size:13px;line-height:1.6;color:var(--fg-soft);white-space:pre-wrap;word-break:break-word;unicode-bidi:plaintext;text-align:start;max-height:130px;overflow:auto}
 
-.toast{position:fixed;inset-inline:16px;bottom:18px;margin-inline:auto;max-width:520px;z-index:70;
-       background:var(--night);color:#fff;padding:14px 18px;border-radius:16px;font-size:14.5px;font-weight:550;
-       text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.35);opacity:0;transform:translateY(14px);
-       pointer-events:none;transition:opacity .35s,transform .45s var(--ease)}
-.toast.on{opacity:1;transform:translateY(0)}
-.note a{color:var(--purple-ink);font-weight:650}
-.ic{width:18px;height:18px;flex:none}
-[dir="rtl"] .flip{transform:scaleX(-1)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:560px){
-  .top{height:auto;padding-block:14px;gap:10px}
-  .brandmark{font-size:15px}
-  .brandmark img{width:28px;height:28px}
-  #backBtn{display:none}                 /* the lockup already goes home */
+.foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--fg-mute)}
+.foot a{color:var(--purple-ink);font-weight:650}
+.reg{display:inline-flex;align-items:center;gap:6px;font-weight:650;color:var(--purple-ink)}
+.reg .ic{width:15px;height:15px}
+
+.toast{position:fixed;inset-inline:16px;bottom:18px;margin-inline:auto;max-width:520px;z-index:70;background:var(--night);color:#fff;padding:12px 16px;border-radius:14px;font-size:14px;font-weight:550;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.35);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s}
+.toast.on{opacity:1;transform:none}
+
+/* short laptop screens: tighten so everything stays in one frame */
+@media (min-width:901px) and (max-height:760px){
+  .panel{gap:10px}.head p{display:none}
+  .inp{height:42px}.btn{height:46px}.net{height:40px}.filebtn{height:38px}
 }
+
+/* ---- phones & tablets: everything in one screen, actions pinned ---- */
+@media (max-width:900px){
+  :root{--top:50px}
+  .top{gap:8px}
+  .brandmark{font-size:14px}.brandmark img{width:26px;height:26px}
+  .ghost{height:32px;padding:0 12px;font-size:12.5px}
+  #backBtn{display:none}
+  .app{grid-template-columns:1fr;gap:10px;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .preview-col{order:-1}
+  .stage{height:clamp(170px,calc(100svh - 405px),50svh);width:auto;min-height:0;max-height:none;border-radius:16px;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+  .head,.hint,.lab,#labPhotoStep:not(.has){display:none}
+  .panel{gap:10px}
+  .step{gap:6px}
+  .evs{gap:6px}
+  .ev{padding:8px 9px;border-radius:12px;justify-content:center}
+  .ev b{align-items:flex-start;font-size:12.5px}
+  .ev b span{white-space:normal;overflow:visible;line-height:1.2}
+  .ev .dot{margin-top:4px;width:8px;height:8px}
+  .ev small{font-size:11px}
+  .ev .venue{display:none}
+  .inp{height:44px;border-radius:11px;font-size:16px}
+  .two{gap:6px}
+  .filebtn{height:38px;font-size:13px}
+  .nets{gap:6px}.net{height:40px;border-radius:11px}
+  .net span{display:none}
+  .stage .addph{top:auto;bottom:8px;inset-inline-end:8px;height:32px;padding:0 10px;font-size:12px;background:rgba(15,16,21,.78)}
+  .app:has(#labPhotoStep.has) .addph{display:none}
+  .stage .drag{inset-inline-start:50%;bottom:auto;top:8px;transform:translateX(-50%);white-space:nowrap}
+  [dir="rtl"] .stage .drag{transform:translateX(50%)}
+  .app:has(#labPhotoStep.has) .stage{height:clamp(165px,calc(100svh - 450px),46svh)}
+  .cap summary{padding:8px 12px}
+  .actions{position:fixed;inset-inline:0;bottom:0;z-index:60;padding:10px max(16px,env(safe-area-inset-left,0px)) calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+  .btn{height:48px}
+  .foot{font-size:12px}
+}
+@media (max-width:400px){ .ev b{font-size:12px} }
+/* very short phones: the caption is still copied by every share button */
+@media (max-width:900px) and (max-height:620px){ .cap{display:none} .foot{font-size:11.5px} }
 </style>
 </head>
 <body>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<div class="wrap">
-  <header class="top">
-    <a class="brandmark" href="../" aria-label="Canva Community Saudi Arabia">
-      <img src="../assets/logo.png" alt=""><span><b>Canva</b> Community <b>SA</b></span>
-    </a>
-    <span class="sp"></span>
-    <button class="ghost" id="langBtn" type="button"></button>
-    <a class="ghost" href="../" id="backBtn"></a>
-  </header>
+<header class="top">
+  <a class="brandmark" href="../" aria-label="Canva Community Saudi Arabia">
+    <img src="../assets/logo.png" alt=""><span><b>Canva</b> Community <b>SA</b></span>
+  </a>
+  <span class="sp"></span>
+  <button class="ghost" id="langBtn" type="button"></button>
+  <a class="ghost" href="../" id="backBtn"></a>
+</header>
 
-  <div class="head">
-    <span class="eyebrow" id="eyebrow"></span>
-    <h1 id="title"></h1>
-    <p id="sub"></p>
-  </div>
+<main class="app">
+  <section class="panel">
+    <div class="head">
+      <span class="eyebrow" id="eyebrow"></span>
+      <h1 id="title"></h1>
+      <p id="sub"></p>
+    </div>
 
-  <div class="cols">
-    <div>
-      <div class="field">
-        <span class="lab" id="labEvent"></span>
-        <div class="evs" id="evs"></div>
-      </div>
+    <div class="step">
+      <span class="lab"><span class="n">1</span><span id="labEvent"></span></span>
+      <div class="evs" id="evs"></div>
+    </div>
 
-      <div class="field">
-        <label class="lab" for="nm" id="labName"></label>
-        <input class="inp" id="nm" maxlength="34" autocomplete="name">
-      </div>
-
-      <div class="field">
-        <label class="lab" for="rl" id="labRole"></label>
-        <input class="inp" id="rl" maxlength="46" autocomplete="organization-title">
-      </div>
-
-      <div class="field">
-        <span class="lab" id="labPhoto"></span>
-        <div class="photo-row">
-          <label class="filebtn" for="ph">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5m0 0L8 9m4-4 4 4M5 18.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span id="labPhotoBtn"></span>
-          </label>
-          <input type="file" id="ph" accept="image/*">
-          <button class="filebtn" id="clearPh" type="button" hidden></button>
-        </div>
-        <div id="zoomWrap" hidden style="margin-top:14px">
-          <label class="lab" for="zoom" id="labZoom"></label>
-          <input class="rng" type="range" id="zoom" min="100" max="260" value="100">
-        </div>
-        <p class="hint">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11V8a6 6 0 1 1 12 0v3M5 11h14v9H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-          <span id="privacy"></span>
-        </p>
+    <div class="step">
+      <span class="lab"><span class="n">2</span><span id="labInfo"></span></span>
+      <div class="two">
+        <input class="inp" id="nm" maxlength="34" autocomplete="name" aria-label="Name">
+        <input class="inp" id="rl" maxlength="46" autocomplete="organization-title" aria-label="Role">
       </div>
     </div>
 
-    <div class="preview-col">
-      <div class="stage">
-        <canvas id="card" width="1080" height="1350" role="img"></canvas>
-        <span class="drag" id="dragHint"></span>
+    <div class="step" id="labPhotoStep">
+      <span class="lab"><span class="n">3</span><span id="labPhoto"></span></span>
+      <div class="photo-row">
+        <label class="filebtn" for="ph">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5m0 0L8 9m4-4 4 4M5 18.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="labPhotoBtn"></span>
+        </label>
+        <input type="file" id="ph" accept="image/*">
+        <div class="zoom" id="zoomWrap" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4M8.5 11h5M11 8.5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input class="rng" type="range" id="zoom" min="100" max="260" value="100" aria-label="Zoom">
+        </div>
+        <button class="filebtn x" id="clearPh" type="button" hidden></button>
       </div>
+      <p class="hint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11V8a6 6 0 1 1 12 0v3M5 11h14v9H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span id="privacy"></span>
+      </p>
+    </div>
+
+    <div class="step">
+      <span class="lab"><span class="n">4</span><span id="labShareH"></span></span>
       <div class="actions">
         <button class="btn btn-primary" id="dl" type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span id="labDl"></span>
         </button>
-        <a class="btn btn-line" id="reg" target="_blank" rel="noopener"><span id="labReg"></span>
-          <svg class="ic flip" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h17M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      <div class="share">
-        <span class="share-h" id="labShareH"></span>
         <button class="btn btn-share" id="shareBtn" type="button" hidden>
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4 4 4M5 14v5.5h14V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span id="labShare"></span>
         </button>
-        <div class="nets">
-          <button class="net li" type="button" data-net="li">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9.5v8M6.5 6.5v.01M10.5 17.5v-4.5a2.5 2.5 0 0 1 5 0v4.5M10.5 9.5v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <span>LinkedIn</span>
-          </button>
-          <button class="net x" type="button" data-net="x">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4L5 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-            <span>X</span>
-          </button>
-          <button class="net ig" type="button" data-net="ig">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
-            <span>Instagram</span>
-          </button>
-        </div>
-        <div class="cap">
-          <div class="cap-h"><span id="labCap"></span><button class="copy" id="copyBtn" type="button"></button></div>
-          <pre id="capText"></pre>
-        </div>
       </div>
-      <p class="note" id="note"></p>
+      <div class="nets">
+        <button class="net li" type="button" data-net="li">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9.5v8M6.5 6.5v.01M10.5 17.5v-4.5a2.5 2.5 0 0 1 5 0v4.5M10.5 9.5v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>LinkedIn</span>
+        </button>
+        <button class="net x" type="button" data-net="x">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4L5 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          <span>X</span>
+        </button>
+        <button class="net ig" type="button" data-net="ig">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+          <span>Instagram</span>
+        </button>
+      </div>
+      <details class="cap">
+        <summary>
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="labCap"></span>
+          <button class="copy" id="copyBtn" type="button"></button>
+        </summary>
+        <pre id="capText"></pre>
+      </details>
+    </div>
+
+    <div class="foot">
+      <a class="reg" id="reg" target="_blank" rel="noopener"><span id="labReg"></span>
+        <svg class="ic flip" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h17M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span id="note"></span>
+    </div>
+  </section>
+
+  <div class="preview-col">
+    <div class="stage">
+      <canvas id="card" width="1080" height="1350" role="img"></canvas>
+      <span class="drag" id="dragHint"></span>
+      <button class="addph" id="addPh" type="button">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3V19H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span id="labAddPh"></span>
+      </button>
     </div>
   </div>
-</div>
+</main>
 
 <script>
+
 /* =======================================================================
    Canva World Tour · attendee share card
    Everything happens in this browser: the photo is read with FileReader,
@@ -260,21 +298,24 @@ input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events
 const COPY = {
   eyebrow:  ['Canva World Tour · Jeddah', 'Canva World Tour · جدة'],
   title:    ['Tell everyone you’re coming.', 'عرّف الناس إنك جاي.'],
-  sub:      ['Pick your session, add your name, and get a ready card for Instagram, LinkedIn or X.',
-             'اختر لقاءك، أضف اسمك، واحصل على بطاقة جاهزة لإنستقرام أو LinkedIn أو X.'],
+  sub:      ['4 quick steps. Your card updates live.', '٤ خطوات سريعة، وبطاقتك تتحدث مباشرة.'],
+  labInfo:  ['Your name', 'اسمك'],
+  rolePh:   ['Job title or company (optional)', 'مسماك أو شركتك (اختياري)'],
   labEvent: ['Which session?', 'أي لقاء؟'],
   labName:  ['Your name', 'اسمك'],
   labRole:  ['Job title or company', 'مسماك الوظيفي أو شركتك'],
   optional: ['optional', 'اختياري'],
   labPhoto: ['Your photo', 'صورتك'],
   photoBtn: ['Choose a photo', 'اختر صورة'],
-  photoOff: ['Remove', 'احذف الصورة'],
+  photoOff: ['Remove', 'احذف'],
+  addPh:    ['Add your photo', 'أضف صورتك'],
+  changePh: ['Change photo', 'غيّر الصورة'],
   labZoom:  ['Zoom', 'التكبير'],
   privacy:  ['Your photo stays on this device. Nothing is uploaded.', 'صورتك تبقى على جهازك، ولا يتم رفع أي شيء.'],
-  dl:       ['Download the card', 'حمّل البطاقة'],
+  dl:       ['Download card', 'حمّل البطاقة'],
   reg:      ['Register on Luma', 'سجّل على Luma'],
   drag:     ['Drag to reposition', 'اسحب لتحريك الصورة'],
-  note:     ['1080 × 1350, the Instagram post size. Tag us ', '1080 × 1350، مقاس منشور إنستقرام. ومنشنونا '],
+  note:     ['Tag us ', 'منشنونا '],
   namePh:   ['Write your name', 'اكتب اسمك'],
   back:     ['Back to the site', 'رجوع للموقع'],
   attending:['I’m attending', 'خليني أشوفكم في'],
@@ -283,10 +324,10 @@ const COPY = {
   online:   ['Online', 'أونلاين'],
   past:     ['Done', 'انتهى'],
   me:       ['You', 'أنا'],
-  shareH:   ['Share it', 'شاركها'],
+  shareH:   ['Save & share', 'حمّل وشارك'],
   shareHs:  ['the caption is written for you', 'النص مكتوب لك'],
-  share:    ['Share the card', 'شارك البطاقة'],
-  capLab:   ['The caption', 'النص الجاهز'],
+  share:    ['Share', 'شارك'],
+  capLab:   ['Ready caption', 'النص الجاهز'],
   copy:     ['Copy', 'انسخ'],
   copied:   ['Caption copied.', 'نسخنا النص.'],
   copyFail: ['Could not copy — select the text and copy it yourself.', 'ما قدرنا ننسخ — ظلّل النص وانسخه بنفسك.'],
@@ -393,8 +434,16 @@ function cursorTag(x, y, label, col, mirror){
   ctx.fillText(label, bx + w / 2, y + 28 + 35);
 }
 
+let rafId = 0;
 function draw(){
-  if (!READY) return;
+  if (!READY || rafId) return;
+  rafId = requestAnimationFrame(() => { rafId = 0; drawNow(); });
+}
+function flushDraw(){
+  if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+  if (READY) drawNow();
+}
+function drawNow(){
   const e = ev(), rtl = LANG === 'ar', mid = W / 2;
 
   ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -527,7 +576,7 @@ function draw(){
   ctx.fillText('@canvacommunitysa', mid, 1305);
 
   const cap = document.getElementById('capText');
-  if (cap) cap.textContent = caption();
+  if (cap && cap.closest('details').open) cap.textContent = caption();
 }
 /* ---------- UI ---------- */
 function paintCopy(){
@@ -539,19 +588,19 @@ function paintCopy(){
   $('#title').textContent = T('title');
   $('#sub').textContent = T('sub');
   $('#labEvent').textContent = T('labEvent');
-  $('#labName').textContent = T('labName');
-  $('#labRole').innerHTML = T('labRole') + ' <small>' + T('optional') + '</small>';
-  $('#labPhoto').innerHTML = T('labPhoto') + ' <small>' + T('optional') + '</small>';
+  $('#labInfo').textContent = T('labInfo');
+  $('#rl').placeholder = T('rolePh');
+  $('#labPhoto').innerHTML = T('labPhoto') + ' <small>(' + T('optional') + ')</small>';
   $('#labPhotoBtn').textContent = T('photoBtn');
+  $('#labAddPh').textContent = S.img ? T('changePh') : T('addPh');
   $('#clearPh').textContent = T('photoOff');
-  $('#labZoom').textContent = T('labZoom');
   $('#privacy').textContent = T('privacy');
   $('#labDl').textContent = T('dl');
   $('#labReg').textContent = T('reg');
   $('#dragHint').textContent = T('drag');
   $('#nm').placeholder = T('namePh');
   $('#note').innerHTML = T('note') + '<a href="https://www.instagram.com/canvacommunitysa/" target="_blank" rel="noopener">@canvacommunitysa</a>';
-  $('#labShareH').innerHTML = T('shareH') + ' <small>' + T('shareHs') + '</small>';
+  $('#labShareH').textContent = T('shareH');
   $('#labShare').textContent = T('share');
   $('#labCap').textContent = T('capLab');
   $('#copyBtn').textContent = T('copy');
@@ -561,10 +610,9 @@ function paintCopy(){
 }
 function paintEvents(){
   $('#evs').innerHTML = EVENTS.map(e => `
-    <button class="ev" type="button" data-slug="${e.slug}" aria-pressed="${e.slug === S.slug}">
-      <span class="dot" style="background:${e.color};color:${e.color}"></span>
-      <span class="t"><b>${e.title}</b><small>${fmtShort(e)} · ${e.format === 'online' ? T('online') : (LANG === 'ar' ? e.venue.ar : e.venue.en)}</small></span>
-      ${isPast(e) ? `<span class="past">${T('past')}</span>` : ''}
+    <button class="ev" type="button" data-slug="${e.slug}" aria-pressed="${e.slug === S.slug}" title="${e.title}">
+      <b><span class="dot" style="background:${e.color}"></span><span>${e.title}</span></b>
+      <small>${fmtShort(e)}<span class="venue"> · ${e.format === 'online' ? T('online') : (LANG === 'ar' ? e.venue.ar : e.venue.en)}</span>${isPast(e) ? `<span class="past">${T('past')}</span>` : ''}</small>
     </button>`).join('');
 }
 
@@ -587,8 +635,11 @@ $('#ph').addEventListener('change', ev2 => {
       $('#zoom').value = 100;
       $('#zoomWrap').hidden = false;
       $('#clearPh').hidden = false;
+      $('#labPhotoStep').classList.add('has');
+      $('#labAddPh').textContent = T('changePh');
       $('#card').classList.add('grab');
       $('#dragHint').classList.add('on');
+      setTimeout(() => $('#dragHint').classList.remove('on'), 2600);
       draw();
     };
     im.src = fr.result;                 // stays in this tab, never sent anywhere
@@ -598,6 +649,8 @@ $('#ph').addEventListener('change', ev2 => {
 $('#clearPh').addEventListener('click', () => {
   S.img = null; $('#ph').value = '';
   $('#zoomWrap').hidden = true; $('#clearPh').hidden = true;
+  $('#labPhotoStep').classList.remove('has');
+  $('#labAddPh').textContent = T('addPh');
   $('#card').classList.remove('grab');
   $('#dragHint').classList.remove('on');
   draw();
@@ -607,6 +660,8 @@ $('#zoom').addEventListener('input', e => { S.zoom = +e.target.value / 100; draw
 /* drag to reposition, in card pixels */
 let dragging = false, lastX = 0, lastY = 0;
 const cardEl = $('#card');
+$('#addPh').addEventListener('click', () => $('#ph').click());
+cardEl.addEventListener('click', () => { if (!S.img) $('#ph').click(); });
 cardEl.addEventListener('pointerdown', e => {
   if (!S.img) return;
   dragging = true; lastX = e.clientX; lastY = e.clientY;
@@ -642,7 +697,7 @@ const fileName = () => {
   const who = (S.name.trim() || 'canva-community').replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').toLowerCase();
   return `cwt-${ev().slug}-${who}.png`;
 };
-const pngBlob = () => new Promise(r => cardEl.toBlob(r, 'image/png'));
+const pngBlob = () => { flushDraw(); return new Promise(r => cardEl.toBlob(r, 'image/png')); };
 function saveBlob(b){
   const url = URL.createObjectURL(b);
   const a = document.createElement('a');
@@ -806,7 +861,12 @@ function loadImg(src){
 
   READY = true;
   paintCopy();
-  draw();
+  flushDraw();
+  document.querySelector('.cap').addEventListener('toggle', e => {
+    if (e.target.open) $('#capText').textContent = caption();
+  });
+  // the copy button lives inside <summary>: copy without toggling the panel
+  $('#copyBtn').addEventListener('click', e => e.preventDefault(), true);
 })();
 </script>
 </body>
