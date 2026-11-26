@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تحدّي البطة</title>
+<meta name="description" content="لعبتين تركيز سريعة للجمهور: وين البطة؟ وطريق البحيرة. اللي يجاوب صح ياخذ البطة.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="تحدّي البطة 🦆">
+<meta property="og:description" content="ركّزوا… واللي يجاوب صح ياخذ البطة">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --tile:transparent;
+  --track:rgba(16,36,58,.14);
+  --surface:#FFFFFF;
+  --ink:#10243A;
+  --muted:#3E566B;
+  --edge:#10243A;
+  --line:#10243A;
+  --duck:#FFC928;
+  --duck-deep:#F09D00;
+  --beak:#FF6B1A;
+  --pond:#1FA2DB;
+  --pond-deep:#0F75A8;
+  --cup:#F0483E;
+  --cup-deep:#B92F28;
+  --good:#1BAF6A;
+  --bad:#E5403A;
+  --on-accent:#10243A;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);background:#FFFFFF}
+body{
+  margin:0;height:100%;display:flex;flex-direction:column;overflow:hidden;
+  background-color:var(--bg);
+  color:var(--ink);
+  font-family:"Baloo Bhaijaan 2","Tajawal","Segoe UI",Tahoma,system-ui,sans-serif;
+  -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;
+}
+button{font-family:inherit}
+button:focus-visible{outline:4px solid var(--pond);outline-offset:3px}
+
+/* top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(12px,3vw,28px) 6px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:clamp(18px,2.2vw,26px);background:none;border:0;color:var(--ink);cursor:pointer;padding:4px 6px;border-radius:12px}
+.brand svg{width:44px;height:37px}
+.tools{display:flex;gap:10px}
+.icon-btn{width:48px;height:48px;border-radius:16px;border:3px solid var(--edge);background:var(--surface);color:var(--ink);font-size:21px;cursor:pointer;box-shadow:0 4px 0 var(--edge);display:grid;place-items:center;padding:0}
+.icon-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--edge)}
+
+main{flex:1;min-height:0;display:flex;flex-direction:column;overflow:auto}
+.view{display:none;flex:1;min-height:0;flex-direction:column;padding:0 clamp(12px,3vw,32px) 10px}
+.view.active{display:flex}
+
+/* home */
+.hero{text-align:center;padding:clamp(4px,2vh,24px) 0 clamp(14px,3vh,30px)}
+.hero-duck{width:clamp(110px,14vw,180px);height:auto;animation:bob 2.6s ease-in-out infinite;transform-origin:50% 80%}
+.hero h1{font-size:clamp(46px,8vw,112px);line-height:.95;margin:.05em 0 .12em;font-weight:800;letter-spacing:-.01em}
+.hero p{font-size:clamp(18px,2.3vw,28px);color:var(--muted);margin:0;font-weight:600}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(16px,2.6vw,32px);max-width:1080px;width:100%;margin:0 auto;padding-bottom:18px}
+.game-card{text-align:right;background:var(--surface);color:var(--ink);border:3px solid var(--edge);border-radius:30px;padding:18px 26px 24px;box-shadow:0 9px 0 var(--edge);cursor:pointer;transition:transform .15s ease}
+.game-card:hover{transform:translateY(-4px)}
+.game-card:active{transform:translateY(6px);box-shadow:0 3px 0 var(--edge)}
+.game-card svg.art{display:block;width:100%;height:130px;margin-bottom:6px}
+.game-card h2{margin:0;font-size:clamp(28px,3.2vw,40px);font-weight:800;line-height:1.1}
+.game-card p{margin:6px 0 14px;color:var(--muted);font-size:clamp(16px,1.6vw,19px);line-height:1.55;font-weight:500}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--bg);border:2px solid var(--edge);border-radius:999px;padding:1px 12px;font-size:15px;font-weight:700}
+
+/* game head */
+.ghead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:2px 0 4px}
+.pill{border:3px solid var(--edge);background:var(--surface);border-radius:999px;padding:.12em .8em;font-weight:800;font-size:clamp(15px,1.5vw,30px);white-space:nowrap}
+.levels{display:flex;gap:4px;background:var(--surface);border:3px solid var(--edge);border-radius:999px;padding:4px}
+.levels button{border:0;background:transparent;color:var(--ink);font-weight:700;font-size:clamp(14px,1.3vw,26px);padding:.12em .7em;border-radius:999px;cursor:pointer}
+.levels button.on{background:var(--duck);color:var(--on-accent)}
+.levels.locked{opacity:.5;pointer-events:none}
+.prompt{text-align:center;font-size:clamp(24px,4.4vw,92px);font-weight:800;margin:2px 0 4px;line-height:1.25;min-height:1.25em}
+.prompt.pop{animation:pop .35s ease-out}
+.hl{display:inline-block;background:var(--duck);color:var(--on-accent);border:3px solid var(--edge);border-radius:16px;padding:0 .3em;line-height:1.15}
+
+/* timer */
+.timer{position:relative;width:clamp(66px,5.6vw,118px);height:clamp(66px,5.6vw,118px);display:grid;place-items:center;font-weight:800;font-size:clamp(26px,2.4vw,50px);background:var(--surface);border:3px solid var(--edge);border-radius:50%}
+.timer svg{position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);transform:rotate(-90deg)}
+.timer circle{fill:none;stroke-width:6}
+.timer .track{stroke:var(--track)}
+.timer #ringFg{stroke:var(--duck-deep);stroke-linecap:round}
+.timer span{position:relative}
+.timer.low #ringFg{stroke:var(--bad)}
+.timer.low span{color:var(--bad);animation:pulse .5s ease-in-out infinite}
+
+/* cups */
+.stage{position:relative;flex:1;min-height:300px;width:100%;max-width:1700px;margin:0 auto}
+.cup{position:absolute;left:0;bottom:80px;cursor:pointer;z-index:2}
+.cup::after{content:"";position:absolute;left:10%;right:10%;bottom:-12px;height:20px;border-radius:50%;background:rgba(0,0,0,.16);z-index:0}
+.cup .duck{position:absolute;left:19%;bottom:3%;width:62%;height:auto;z-index:1}
+.cup .body{position:absolute;inset:0;z-index:2;transition:transform .5s cubic-bezier(.34,1.45,.64,1)}
+.cup .body svg{width:100%;height:100%;display:block;overflow:visible}
+.cup.lifted .body{transform:translateY(-70%) rotate(-6deg)}
+.cup.shake .body svg{animation:shake .5s ease-in-out}
+.slot{--s:clamp(58px,4.8vw,104px);position:absolute;bottom:6px;left:0;width:var(--s);height:var(--s);margin-left:calc(var(--s) / -2);border-radius:50%;background:var(--surface);color:var(--ink);border:3px solid var(--edge);display:grid;place-items:center;font-weight:800;font-size:calc(var(--s) * .52);box-shadow:0 4px 0 var(--edge);cursor:pointer;z-index:5;padding:0}
+.slot.pulse{animation:pulse 1s ease-in-out infinite}
+.slot.win{background:var(--duck);color:var(--on-accent);animation:none}
+.slot.miss{opacity:.4;animation:none}
+
+/* paths */
+.board-wrap{position:relative;flex:1;min-height:280px}
+.board{position:absolute;inset:0;width:100%;height:100%;transition:filter .45s ease,opacity .45s ease}
+.board-wrap.covered .board{filter:blur(18px);opacity:.45}
+.cover{position:absolute;inset:0;display:none;place-items:center;text-align:center;font-size:clamp(40px,7vw,96px);font-weight:800;line-height:1.1}
+.cover small{display:block;font-size:clamp(17px,2vw,26px);color:var(--muted);font-weight:600;margin-top:6px}
+.board-wrap.covered .cover{display:grid}
+.halo{fill:none;stroke:var(--bg);stroke-width:28;stroke-linecap:round}
+.wire{fill:none;stroke:var(--line);stroke-width:11;stroke-linecap:round}
+.trace{fill:none;stroke-width:17;stroke-linecap:round}
+.trace.win{stroke:var(--duck-deep)}
+.trace.lose{stroke:var(--bad)}
+.trace.old{opacity:.28}
+.dstart{cursor:pointer}
+.dstart.dim .dsvg{opacity:.28}
+.badge circle{fill:var(--surface);stroke:var(--edge);stroke-width:3}
+.badge text{fill:var(--ink);font-weight:800;font-size:38px}
+.pond-water{fill:var(--pond);stroke:var(--edge);stroke-width:3}
+.ripple{fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:3}
+.pond-label{fill:var(--pond-deep);font-weight:800;font-size:32px}
+.end-emoji{font-size:66px}
+.anim{transform-box:fill-box;transform-origin:center}
+.anim.splash{animation:splash .7s ease-out}
+.anim.shake{animation:shake .5s ease-in-out}
+
+/* controls */
+.controls{display:flex;justify-content:center;align-items:center;gap:12px;padding:8px 0 4px;flex-wrap:wrap}
+.btn{font-weight:800;font-size:clamp(21px,2.2vw,44px);padding:.22em 1.4em .32em;border-radius:999px;border:3px solid var(--edge);background:var(--duck);color:var(--on-accent);box-shadow:0 6px 0 var(--edge);cursor:pointer;min-width:clamp(220px,18vw,400px)}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--edge)}
+.btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:0 6px 0 var(--edge)}
+
+.hint{text-align:center;color:var(--muted);font-size:14px;padding:2px 12px 8px;font-weight:600}
+.hint kbd{font-family:inherit;background:var(--surface);border:2px solid var(--edge);border-radius:7px;padding:0 7px;margin:0 2px;font-size:13px}
+@media (hover:none){.hint{display:none}}
+
+/* toast + confetti */
+.toast{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:20;padding:20px}
+.toast .card{background:var(--surface);border:4px solid var(--edge);border-radius:34px;box-shadow:0 10px 0 var(--edge);padding:18px 44px 26px;text-align:center;transform:scale(.6);opacity:0;transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .2s}
+.toast.show .card{transform:scale(1);opacity:1;pointer-events:auto}
+.toast .big{font-size:clamp(38px,6vw,84px);font-weight:800;line-height:1.1}
+.toast .sub{font-size:clamp(19px,2.5vw,32px);color:var(--muted);font-weight:700}
+.toast-duck{width:clamp(100px,13vw,160px);height:auto;animation:bob 1.2s ease-in-out infinite;transform-origin:50% 80%}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:30}
+
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-10px) rotate(-5deg)}40%{transform:translateX(10px) rotate(5deg)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+@keyframes pop{0%{transform:scale(.9);opacity:.3}100%{transform:scale(1);opacity:1}}
+@keyframes splash{0%{transform:scale(1)}35%{transform:scale(1.3)}70%{transform:scale(.94)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){
+  .hero-duck,.toast-duck,.slot.pulse,.timer.low span{animation:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="duckArt" viewBox="0 0 120 100">
+      <g stroke="#3B2A10" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path style="fill:var(--duck)" d="M16 66 C16 52 30 48 46 50 L78 50 C90 50 98 44 106 34 C113 46 114 62 108 73 C100 88 84 94 60 94 C34 94 16 84 16 66 Z"/>
+        <path style="fill:var(--duck-deep)" d="M58 66 C66 58 84 58 90 66 C86 78 68 82 58 74 Z"/>
+        <circle style="fill:var(--duck)" cx="42" cy="34" r="24"/>
+        <path style="fill:var(--beak)" d="M20 36 C10 33 3 38 6 44 C9 49 20 47 26 42 Z"/>
+      </g>
+      <circle cx="35" cy="29" r="4.6" fill="#10243A"/>
+      <circle cx="36.6" cy="27.4" r="1.6" fill="#fff"/>
+      <circle cx="49" cy="41" r="4" fill="#FF8FA3" opacity=".55"/>
+    </symbol>
+    <symbol id="cupArt" viewBox="0 0 200 200">
+      <g stroke="#2A1612" stroke-width="4" stroke-linejoin="round">
+        <path style="fill:var(--cup)" d="M50 16 Q100 4 150 16 L186 176 Q100 196 14 176 Z"/>
+        <path fill="#FFFFFF" fill-opacity=".92" stroke="none" d="M32 96 Q100 110 168 96 L174 124 Q100 140 26 124 Z"/>
+        <path style="fill:var(--cup-deep)" d="M12 172 Q100 194 188 172 L192 186 Q100 210 8 186 Z"/>
+        <ellipse style="fill:var(--cup-deep)" cx="100" cy="14" rx="50" ry="8"/>
+      </g>
+      <path d="M70 34 L52 158" stroke="#fff" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <button class="brand" id="homeBtn" type="button" aria-label="الرئيسية">
+    <svg viewBox="0 0 120 100" aria-hidden="true"><use href="#duckArt"/></svg>
+    تحدّي البطة
+  </button>
+  <div class="tools">
+    <button class="icon-btn" id="soundBtn" type="button" aria-label="الصوت">🔊</button>
+    <button class="icon-btn" id="fsBtn" type="button" aria-label="شاشة كاملة">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="view" id="home">
+    <div class="hero">
+      <svg class="hero-duck" viewBox="0 0 120 100" aria-hidden="true"><use href="#duckArt"/></svg>
+      <h1>تحدّي البطة</h1>
+      <p>ركّزوا… واللي يجاوب صح ياخذ البطة</p>
+    </div>
+    <div class="games">
+      <button class="game-card" type="button" data-go="cups">
+        <svg class="art" viewBox="0 -14 330 166" aria-hidden="true">
+          <svg x="8" y="46" width="100" height="100" viewBox="0 0 200 200"><use href="#cupArt"/></svg>
+          <svg x="130" y="94" width="70" height="58" viewBox="0 0 120 100"><use href="#duckArt"/></svg>
+          <g transform="rotate(-8 165 40)"><svg x="115" y="-12" width="100" height="100" viewBox="0 0 200 200"><use href="#cupArt"/></svg></g>
+          <svg x="222" y="46" width="100" height="100" viewBox="0 0 200 200"><use href="#cupArt"/></svg>
+        </svg>
+        <h2>وين البطة؟</h2>
+        <p>نخبّي البطة تحت كوب ونخلط الأكواب. تابعوها بعيونكم وصيحوا برقم الكوب.</p>
+        <div class="chips"><span class="chip">تركيز</span><span class="chip">٣٠ ثانية</span><span class="chip">٤ مستويات</span></div>
+      </button>
+      <button class="game-card" type="button" data-go="paths">
+        <svg class="art" viewBox="0 0 330 166" aria-hidden="true">
+          <svg x="40" y="0" width="52" height="44" viewBox="0 0 120 100"><use href="#duckArt"/></svg>
+          <svg x="139" y="0" width="52" height="44" viewBox="0 0 120 100"><use href="#duckArt"/></svg>
+          <svg x="238" y="0" width="52" height="44" viewBox="0 0 120 100"><use href="#duckArt"/></svg>
+          <g fill="none" stroke-linecap="round">
+            <path d="M66 50 C66 80 165 70 165 100 C165 120 264 112 264 132" stroke="var(--bg)" stroke-width="14"/>
+            <path d="M66 50 C66 80 165 70 165 100 C165 120 264 112 264 132" stroke="var(--line)" stroke-width="5"/>
+            <path d="M165 50 C165 80 66 70 66 100 C66 118 165 114 165 132" stroke="var(--bg)" stroke-width="14"/>
+            <path d="M165 50 C165 80 66 70 66 100 C66 118 165 114 165 132" stroke="var(--line)" stroke-width="5"/>
+            <path d="M264 50 C264 84 264 96 264 100 C264 120 66 112 66 132" stroke="var(--bg)" stroke-width="14"/>
+            <path d="M264 50 C264 84 264 96 264 100 C264 120 66 112 66 132" stroke="var(--line)" stroke-width="5"/>
+          </g>
+          <ellipse cx="165" cy="148" rx="40" ry="14" style="fill:var(--pond);stroke:var(--edge)" stroke-width="2.5"/>
+          <text x="66" y="150" text-anchor="middle" dominant-baseline="central" font-size="30">🦊</text>
+          <text x="264" y="150" text-anchor="middle" dominant-baseline="central" font-size="30">🐊</text>
+        </svg>
+        <h2>طريق البحيرة</h2>
+        <p>كل بطة على خيط والخيوط متشابكة. أي بطة توصل للبحيرة؟ عندكم ثواني بس.</p>
+        <div class="chips"><span class="chip">تتبّع بالعين</span><span class="chip">١٠–١٢ ثانية</span><span class="chip">٤ مستويات</span></div>
+      </button>
+    </div>
+  </section>
+
+  <!-- CUPS -->
+  <section class="view" id="cups">
+    <div class="ghead">
+      <div class="pill">الجولة <b id="cupRound">١</b></div>
+      <div class="levels" id="cupLevels"></div>
+    </div>
+    <h2 class="prompt" id="cupPrompt"></h2>
+    <div class="stage" id="cupStage"></div>
+    <div class="controls"><button class="btn" id="cupMain" type="button">ابدأ الخلط</button></div>
+  </section>
+
+  <!-- PATHS -->
+  <section class="view" id="paths">
+    <div class="ghead">
+      <div class="pill">الجولة <b id="pathRound">١</b></div>
+      <div class="timer" id="timer">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="track" cx="32" cy="32" r="26"/><circle id="ringFg" cx="32" cy="32" r="26"/></svg>
+        <span id="timerNum">١٠</span>
+      </div>
+      <div class="levels" id="pathLevels"></div>
+    </div>
+    <h2 class="prompt" id="pathPrompt"></h2>
+    <div class="board-wrap covered" id="boardWrap">
+      <svg class="board" id="board" viewBox="0 0 1000 712" aria-label="خيوط البط"></svg>
+      <div class="cover"><div>جاهزين؟<small>أول ما نبدأ يشتغل العدّاد… تتبّعوا الخيوط بعيونكم</small></div></div>
+    </div>
+    <div class="controls"><button class="btn" id="pathMain" type="button">ابدأ</button></div>
+  </section>
+</main>
+
+<div class="hint"><kbd>مسافة</kbd> الخطوة الجاية &nbsp; <kbd>١–٥</kbd> اختيار رقم &nbsp; <kbd>F</kbd> شاشة كاملة &nbsp; <kbd>Esc</kbd> الرئيسية</div>
+
+<div class="toast" id="toast"><div class="card">
+  <svg class="toast-duck" viewBox="0 0 120 100" aria-hidden="true"><use href="#duckArt"/></svg>
+  <div class="big" id="toastBig"></div>
+  <div class="sub" id="toastSub"></div>
+</div></div>
+<canvas id="confetti"></canvas>
+
+<script>
+(() => {
+const $ = s => document.querySelector(s);
+const NS = 'http://www.w3.org/2000/svg';
+const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+const rand = n => Math.floor(Math.random() * n);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = rand(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const reduceMotion = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+const f1 = v => Math.round(v * 10) / 10;
+
+function setPrompt(el, html) {
+  el.innerHTML = html;
+  el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+}
+
+/* ---------- sound ---------- */
+let actx = null, soundOn = true;
+function tone(freq, dur = .12, type = 'sine', vol = .12, when = 0, toFreq = null) {
+  if (!soundOn) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    const t = actx.currentTime + when, o = actx.createOscillator(), g = actx.createGain();
+    o.type = type; o.frequency.setValueAtTime(freq, t);
+    if (toFreq) o.frequency.exponentialRampToValueAtTime(toFreq, t + dur);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + .01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + dur + .05);
+  } catch (e) {}
+}
+const sfx = {
+  quack() { tone(640, .13, 'sawtooth', .07, 0, 330); tone(610, .16, 'sawtooth', .07, .17, 300); },
+  swish() { tone(240 + Math.random() * 120, .07, 'triangle', .05, 0, 520); },
+  tick() { tone(880, .08, 'square', .05); },
+  win() { [523, 659, 784, 1047].forEach((fq, i) => tone(fq, .22, 'triangle', .14, i * .11)); },
+  miss() { tone(230, .28, 'sawtooth', .07, 0, 110); },
+  pop() { tone(500, .09, 'sine', .1, 0, 950); }
+};
+const soundBtn = $('#soundBtn');
+function toggleSound() { soundOn = !soundOn; soundBtn.textContent = soundOn ? '🔊' : '🔇'; }
+soundBtn.addEventListener('click', toggleSound);
+
+/* ---------- fullscreen ---------- */
+function toggleFS() {
+  const d = document, el = d.documentElement;
+  try {
+    if (d.fullscreenElement || d.webkitFullscreenElement) {
+      const ex = d.exitFullscreen || d.webkitExitFullscreen; if (ex) ex.call(d);
+    } else {
+      const rq = el.requestFullscreen || el.webkitRequestFullscreen;
+      if (rq) { const p = rq.call(el); if (p && p.catch) p.catch(() => {}); }
+    }
+  } catch (e) {}
+}
+$('#fsBtn').addEventListener('click', toggleFS);
+
+/* ---------- toast ---------- */
+const toast = $('#toast');
+let toastT = null;
+function showToast(big, sub, delay = 550) {
+  clearTimeout(toastT);
+  toastT = setTimeout(() => {
+    $('#toastBig').textContent = big; $('#toastSub').textContent = sub;
+    toast.classList.add('show');
+    toastT = setTimeout(hideToast, 2700);
+  }, delay);
+}
+function hideToast() { clearTimeout(toastT); toast.classList.remove('show'); }
+toast.addEventListener('click', hideToast);
+
+/* ---------- confetti ---------- */
+const cv = $('#confetti'), cx = cv.getContext('2d');
+let parts = [], cRaf = null;
+function sizeCanvas() {
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+function confetti() {
+  if (reduceMotion) return;
+  sizeCanvas();
+  const cs = getComputedStyle(document.documentElement);
+  const cols = ['--duck', '--beak', '--pond', '--cup', '--good', '--duck-deep'].map(v => cs.getPropertyValue(v).trim() || '#FFC928');
+  const W = innerWidth, H = innerHeight;
+  for (let i = 0; i < 190; i++) {
+    const left = i % 2 === 0;
+    parts.push({
+      x: left ? -10 : W + 10, y: H * .7,
+      vx: (left ? 1 : -1) * (5 + Math.random() * 11), vy: -(10 + Math.random() * 13),
+      r: Math.random() * Math.PI, vr: (Math.random() - .5) * .4,
+      w: 9 + Math.random() * 8, h: 5 + Math.random() * 6,
+      c: cols[rand(cols.length)], round: Math.random() < .3
+    });
+  }
+  if (!cRaf) cRaf = requestAnimationFrame(cTick);
+}
+function cTick() {
+  const W = innerWidth, H = innerHeight;
+  cx.clearRect(0, 0, W, H);
+  for (const p of parts) {
+    p.vy += .32; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+    cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c;
+    if (p.round) { cx.beginPath(); cx.arc(0, 0, p.w / 2.4, 0, Math.PI * 2); cx.fill(); }
+    else cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+    cx.restore();
+  }
+  parts = parts.filter(p => p.y < H + 40);
+  if (parts.length) cRaf = requestAnimationFrame(cTick);
+  else { cx.clearRect(0, 0, W, H); cRaf = null; }
+}
+
+/* ---------- level chips ---------- */
+function buildLevels(box, levels, onPick) {
+  box.innerHTML = '';
+  levels.forEach((L, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = L.name;
+    b.addEventListener('click', () => onPick(i));
+    box.appendChild(b);
+  });
+}
+function markLevel(box, i) { [...box.children].forEach((b, j) => b.classList.toggle('on', j === i)); }
+
+/* =========================================================
+   GAME 1 — وين البطة؟ (shell game)
+   ========================================================= */
+const CUP_LEVELS = [
+  { name: 'سهل',   n: 3, swaps: 6,  dur: 620 },
+  { name: 'متوسط', n: 3, swaps: 10, dur: 450 },
+  { name: 'صعب',   n: 4, swaps: 13, dur: 350 },
+  { name: 'خارق',  n: 5, swaps: 17, dur: 270 }
+];
+const cup = { level: 0, round: 1, state: 'intro', n: 3, slotCup: [], duckCup: 0, els: [], slots: [], busy: false, built: false, cw: 160 };
+const cupStage = $('#cupStage'), cupPrompt = $('#cupPrompt'), cupMain = $('#cupMain'), cupLevelsEl = $('#cupLevels');
+
+function slotX(s) { // left edge of a cup at slot s; slot ١ sits on the right
+  const W = cupStage.clientWidth, n = cup.n, cw = cup.cw;
+  const gap = (W - n * cw) / (n + 1);
+  return gap + (n - 1 - s) * (cw + gap);
+}
+function layoutCups() {
+  if (!cup.built || cup.busy) return;
+  const W = cupStage.clientWidth, H = cupStage.clientHeight;
+  if (!W) return;
+  const sh = cup.slots[0] ? cup.slots[0].offsetHeight : 58, base = sh + 26;
+  cup.cw = Math.max(64, Math.min(360, W / (cup.n + .9), (H - base - 24) / 1.72));
+  cup.els.forEach(el => { el.style.width = el.style.height = cup.cw + 'px'; el.style.bottom = base + 'px'; });
+  cup.slotCup.forEach((ci, s) => { cup.els[ci].style.transform = `translate(${slotX(s)}px,0)`; });
+  cup.slots.forEach((b, s) => { b.style.left = (slotX(s) + cup.cw / 2) + 'px'; });
+}
+if (window.ResizeObserver) new ResizeObserver(() => layoutCups()).observe(cupStage);
+else window.addEventListener('resize', layoutCups);
+
+function makeCup(i) {
+  const el = document.createElement('div');
+  el.className = 'cup';
+  el.innerHTML = (i === cup.duckCup ? `<svg class="duck" viewBox="0 0 120 100" aria-hidden="true"><use href="#duckArt"/></svg>` : '') +
+    `<div class="body"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#cupArt"/></svg></div>`;
+  el.addEventListener('click', () => cupsOpen(cup.slotCup.indexOf(i)));
+  return el;
+}
+
+function cupsNewRound() {
+  hideToast();
+  const L = CUP_LEVELS[cup.level];
+  cup.n = L.n; cup.slotCup = [...Array(L.n).keys()]; cup.duckCup = rand(L.n);
+  cupStage.innerHTML = ''; cup.els = []; cup.slots = [];
+  for (let i = 0; i < L.n; i++) { const el = makeCup(i); cupStage.appendChild(el); cup.els.push(el); }
+  for (let s = 0; s < L.n; s++) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'slot'; b.textContent = ar(s + 1);
+    b.setAttribute('aria-label', 'كوب ' + ar(s + 1));
+    b.addEventListener('click', () => cupsOpen(s));
+    cupStage.appendChild(b); cup.slots.push(b);
+  }
+  cup.built = true; cup.state = 'intro'; cup.busy = false;
+  layoutCups();
+  setTimeout(() => cup.els.forEach(e => e.classList.add('lifted')), 140);
+  setPrompt(cupPrompt, `البطة تحت كوب <span class="hl">${ar(cup.duckCup + 1)}</span> ركّزوا عليها 👀`);
+  cupMain.textContent = 'ابدأ الخلط'; cupMain.disabled = false;
+  $('#cupRound').textContent = ar(cup.round);
+  markLevel(cupLevelsEl, cup.level);
+}
+
+function moveCup(ci, from, to, front, dur) {
+  const el = cup.els[ci], x1 = slotX(from), x2 = slotX(to), d = Math.abs(from - to);
+  const dy = front ? cup.cw * (.05 + d * .03) : -cup.cw * (.1 + d * .05);
+  const sc = front ? 1.07 : .9;
+  el.style.zIndex = front ? 4 : 1;
+  el.style.transform = `translate(${x2}px,0)`;
+  const frames = [];
+  for (let i = 0; i <= 8; i++) {
+    const t = i / 8, s = Math.sin(Math.PI * t);
+    frames.push({ transform: `translate(${x1 + (x2 - x1) * t}px,${dy * s}px) scale(${1 + (sc - 1) * s})` });
+  }
+  const a = el.animate(frames, { duration: dur, easing: 'ease-in-out' });
+  return a.finished.then(() => { el.style.zIndex = 2; }).catch(() => { el.style.zIndex = 2; });
+}
+
+async function cupsStart() {
+  if (cup.state !== 'intro' || cup.busy) return;
+  const L = CUP_LEVELS[cup.level];
+  cup.busy = true; cup.state = 'shuffling';
+  cupMain.disabled = true; cupLevelsEl.classList.add('locked');
+  cup.els.forEach(e => e.classList.remove('lifted'));
+  setPrompt(cupPrompt, 'لا ترمشون… 👀');
+  sfx.quack();
+  await sleep(800);
+  for (let k = 0; k < L.swaps; k++) {
+    const a = rand(cup.n); let b = rand(cup.n - 1); if (b >= a) b++;
+    const ca = cup.slotCup[a], cb = cup.slotCup[b];
+    const dur = L.dur * (Math.abs(a - b) > 1 ? 1.15 : 1);
+    sfx.swish();
+    await Promise.all([moveCup(ca, a, b, true, dur), moveCup(cb, b, a, false, dur)]);
+    cup.slotCup[a] = cb; cup.slotCup[b] = ca;
+  }
+  cup.busy = false; cup.state = 'guess';
+  cupMain.disabled = false; cupLevelsEl.classList.remove('locked');
+  layoutCups();
+  cup.slots.forEach(b => b.classList.add('pulse'));
+  setPrompt(cupPrompt, 'وين البطة؟ صيحوا بالرقم! 🗣️');
+  cupMain.textContent = 'اكشف البطة';
+}
+
+function cupsOpen(s) {
+  if (cup.busy || s == null || s < 0 || s >= cup.n) return;
+  if (cup.state !== 'guess' && cup.state !== 'revealed') return;
+  const ci = cup.slotCup[s], el = cup.els[ci];
+  if (el.classList.contains('lifted')) return;
+  el.classList.add('lifted');
+  if (ci === cup.duckCup) { cupsWin(s); return; }
+  sfx.miss();
+  cup.slots[s].classList.add('miss');
+  if (cup.state === 'guess') setPrompt(cupPrompt, `كوب ${ar(s + 1)} فاضي! 😅 مين قال غيره؟`);
+  el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+}
+
+function cupsWin(s) {
+  cup.state = 'revealed';
+  cup.slots.forEach(b => b.classList.remove('pulse'));
+  cup.slots[s].classList.add('win');
+  setPrompt(cupPrompt, `🎉 البطة تحت كوب <span class="hl">${ar(s + 1)}</span>`);
+  sfx.win(); setTimeout(sfx.quack, 550);
+  confetti();
+  showToast('مبروك! 🎉', `اللي قال رقم ${ar(s + 1)} ياخذ البطة`);
+  cupMain.textContent = 'الجولة الجاية';
+}
+
+function cupsMain() {
+  if (cup.busy) return;
+  if (cup.state === 'intro') cupsStart();
+  else if (cup.state === 'guess') cupsOpen(cup.slotCup.indexOf(cup.duckCup));
+  else if (cup.state === 'revealed') {
+    cup.round++; cup.level = Math.min(cup.level + 1, CUP_LEVELS.length - 1);
+    cupsNewRound();
+  }
+}
+cupMain.addEventListener('click', cupsMain);
+buildLevels(cupLevelsEl, CUP_LEVELS, i => { if (cup.busy) return; cup.level = i; cupsNewRound(); });
+
+/* =========================================================
+   GAME 2 — طريق البحيرة (tangled lines)
+   ========================================================= */
+const PATH_LEVELS = [
+  { name: 'سهل',   n: 3, k: 3, t: 10 },
+  { name: 'متوسط', n: 4, k: 4, t: 12 },
+  { name: 'صعب',   n: 4, k: 5, t: 12 },
+  { name: 'خارق',  n: 5, k: 6, t: 12 }
+];
+const OBST = [['🦊', 'الثعلب'], ['🐊', 'التمساح'], ['🌵', 'الصبّار'], ['🐍', 'الثعبان'], ['🕳️', 'الحفرة']];
+const VB = { W: 1000, H: 712, top: 150, bot: 582 };
+const pz = { level: 0, round: 1, state: 'ready', built: false, busy: false, paths: [], finalPos: [], winner: 0, pondPos: 0, ends: [], traced: new Set() };
+const board = $('#board'), boardWrap = $('#boardWrap'), pathPrompt = $('#pathPrompt'), pathMain = $('#pathMain'), pathLevelsEl = $('#pathLevels');
+
+function colX(j, n) { // slot ١ on the right
+  const m = n === 3 ? 240 : (n === 4 ? 170 : 130);
+  return VB.W - m - j * (VB.W - 2 * m) / (n - 1);
+}
+function toPath(pts) {
+  let d = `M${f1(pts[0][0])} ${f1(pts[0][1])}`;
+  for (let i = 1; i < pts.length; i++) {
+    const [x1, y1] = pts[i - 1], [x2, y2] = pts[i], c = (y2 - y1) * .55;
+    d += ` C${f1(x1)} ${f1(y1 + c)} ${f1(x2)} ${f1(y2 - c)} ${f1(x2)} ${f1(y2)}`;
+  }
+  return d;
+}
+function genPuzzle(n, k) {
+  let order = [...Array(n).keys()];
+  const lv = [order.slice()];
+  for (let L = 0; L < k; L++) {
+    const next = order.slice(); let sw = 0;
+    for (let j = 0; j < n - 1;) {
+      if (Math.random() < .6) { [next[j], next[j + 1]] = [next[j + 1], next[j]]; sw++; j += 2; }
+      else j++;
+    }
+    if (!sw) { const s = rand(n - 1); [next[s], next[s + 1]] = [next[s + 1], next[s]]; }
+    order = next; lv.push(order.slice());
+  }
+  const gap = Math.abs(colX(0, n) - colX(1, n)), segH = (VB.bot - VB.top) / k;
+  const paths = [];
+  for (let d = 0; d < n; d++) {
+    const pts = [];
+    for (let L = 0; L <= k; L++) {
+      let x = colX(lv[L].indexOf(d), n), y = VB.top + segH * L;
+      if (L > 0 && L < k) { x += (Math.random() - .5) * gap * .36; y += (Math.random() - .5) * segH * .4; }
+      pts.push([x, y]);
+    }
+    paths.push(toPath(pts));
+  }
+  const finalPos = [...Array(n).keys()].map(d => lv[k].indexOf(d));
+  let cands = [...Array(n).keys()].filter(d => finalPos[d] !== d);
+  if (!cands.length) cands = [...Array(n).keys()];
+  const winner = cands[rand(cands.length)];
+  return { paths, finalPos, winner, pondPos: finalPos[winner] };
+}
+
+function renderPuzzle() {
+  const n = PATH_LEVELS[pz.level].n;
+  const obs = shuffle(OBST.slice());
+  let s = '', oi = 0;
+  pz.ends = [];
+  for (let j = 0; j < n; j++) {
+    const x = f1(colX(j, n));
+    if (j === pz.pondPos) {
+      pz.ends[j] = null;
+      s += `<g transform="translate(${x} ${VB.bot + 46})"><g class="anim" id="pond">
+        <ellipse class="pond-water" rx="98" ry="34"/><ellipse class="ripple" rx="64" ry="21"/><ellipse class="ripple" rx="30" ry="9"/>
+      </g><text class="pond-label" y="66" text-anchor="middle">البحيرة</text></g>`;
+    } else {
+      const [e, name] = obs[oi++];
+      pz.ends[j] = { e, name };
+      s += `<g transform="translate(${x} ${VB.bot + 48})"><g class="anim" data-end="${j}"><text class="end-emoji" text-anchor="middle" dominant-baseline="central">${e}</text></g></g>`;
+    }
+  }
+  s += '<g>';
+  pz.paths.forEach(d => { s += `<path class="halo" d="${d}"/><path class="wire" d="${d}"/>`; });
+  s += '</g><g id="traces"></g>';
+  for (let d = 0; d < n; d++) {
+    const x = f1(colX(d, n));
+    s += `<g class="dstart" data-d="${d}" transform="translate(${x} 0)">
+      <rect x="-62" y="0" width="124" height="${VB.top}" fill="transparent"/>
+      <svg class="dsvg" x="-50" y="60" width="100" height="84" viewBox="0 0 120 100"><use href="#duckArt"/></svg>
+      <g class="badge"><circle cx="0" cy="31" r="28"/><text x="0" y="33" text-anchor="middle" dominant-baseline="central">${ar(d + 1)}</text></g>
+    </g>`;
+  }
+  s += '<g id="mover"></g>';
+  board.innerHTML = s;
+  board.querySelectorAll('.dstart').forEach(g => g.addEventListener('click', () => pathsTrace(+g.dataset.d)));
+}
+
+/* timer */
+let timerId = null;
+const ring = $('#ringFg'), timerNum = $('#timerNum'), timerEl = $('#timer');
+const CIRC = 2 * Math.PI * 26;
+ring.style.strokeDasharray = CIRC;
+function setTimer(sec, frac) {
+  timerNum.textContent = ar(Math.ceil(sec));
+  ring.style.strokeDashoffset = CIRC * (1 - frac);
+  timerEl.classList.toggle('low', sec <= 3 && frac < 1 && sec > 0);
+}
+function startTimer(total, onEnd) {
+  stopTimer();
+  const t0 = performance.now(); let last = total;
+  timerId = setInterval(() => {
+    const left = Math.max(0, total - (performance.now() - t0) / 1000);
+    setTimer(left, left / total);
+    const s = Math.ceil(left);
+    if (s !== last) { last = s; if (s <= 3 && s > 0) sfx.tick(); }
+    if (left <= 0) { stopTimer(); if (onEnd) onEnd(); }
+  }, 100);
+}
+function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } timerEl.classList.remove('low'); }
+
+function pathsNew() {
+  hideToast(); stopTimer();
+  const L = PATH_LEVELS[pz.level];
+  Object.assign(pz, genPuzzle(L.n, L.k));
+  pz.traced = new Set(); pz.state = 'ready'; pz.busy = false; pz.built = true;
+  renderPuzzle();
+  boardWrap.classList.add('covered');
+  setPrompt(pathPrompt, 'أي بطة توصل للبحيرة؟ 🌊');
+  pathMain.textContent = 'ابدأ'; pathMain.disabled = false;
+  setTimer(L.t, 1);
+  $('#pathRound').textContent = ar(pz.round);
+  markLevel(pathLevelsEl, pz.level);
+}
+function pathsStart() {
+  if (pz.state !== 'ready') return;
+  boardWrap.classList.remove('covered');
+  pz.state = 'running'; sfx.pop();
+  setPrompt(pathPrompt, 'تتبّعوا الخيوط بعيونكم… 👀');
+  pathMain.textContent = 'اكشف الطريق';
+  startTimer(PATH_LEVELS[pz.level].t, () => {
+    if (pz.state === 'running') {
+      pz.state = 'guess';
+      setPrompt(pathPrompt, 'خلص الوقت! ⏰ أي رقم يوصل؟ صيحوا!');
+      sfx.quack();
+    }
+  });
+}
+function pathsTrace(d) {
+  const n = PATH_LEVELS[pz.level].n;
+  if (pz.busy || pz.state === 'ready' || d == null || d < 0 || d >= n || pz.traced.has(d)) return;
+  pz.traced.add(d); pz.busy = true;
+  const win = d === pz.winner;
+  if (win) stopTimer();
+  pathLevelsEl.classList.add('locked'); pathMain.disabled = true;
+  const tl = board.querySelector('#traces');
+  tl.querySelectorAll('.trace').forEach(p => p.classList.add('old'));
+  const p = document.createElementNS(NS, 'path');
+  p.setAttribute('d', pz.paths[d]); p.setAttribute('class', 'trace ' + (win ? 'win' : 'lose'));
+  tl.appendChild(p);
+  const len = p.getTotalLength();
+  p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+  board.querySelector(`.dstart[data-d="${d}"]`).classList.add('dim');
+  const mv = board.querySelector('#mover');
+  mv.innerHTML = `<svg x="-46" y="-42" width="92" height="77" viewBox="0 0 120 100"><use href="#duckArt"/></svg>`;
+  sfx.quack();
+  const dur = reduceMotion ? 600 : 2300, t0 = performance.now();
+  const step = now => {
+    const t = Math.min(1, (now - t0) / dur);
+    const e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    const pt = p.getPointAtLength(e * len);
+    p.style.strokeDashoffset = len * (1 - e);
+    mv.setAttribute('transform', `translate(${pt.x} ${pt.y})`);
+    if (t < 1) requestAnimationFrame(step); else done();
+  };
+  requestAnimationFrame(step);
+  function done() {
+    pz.busy = false;
+    pathLevelsEl.classList.remove('locked'); pathMain.disabled = false;
+    if (win) {
+      pz.state = 'revealed';
+      const pond = board.querySelector('#pond');
+      if (pond) { pond.classList.remove('splash'); void pond.getBoundingClientRect(); pond.classList.add('splash'); }
+      setPrompt(pathPrompt, `🎉 البطة <span class="hl">${ar(d + 1)}</span> وصلت البحيرة`);
+      sfx.win(); setTimeout(sfx.quack, 550);
+      confetti();
+      showToast('مبروك! 🎉', `اللي قال رقم ${ar(d + 1)} ياخذ البطة`);
+      pathMain.textContent = 'الجولة الجاية';
+    } else {
+      const j = pz.finalPos[d], o = pz.ends[j];
+      sfx.miss();
+      if (o) {
+        setPrompt(pathPrompt, `البطة ${ar(d + 1)} راحت عند ${o.name} ${o.e} 😵`);
+        const g = board.querySelector(`[data-end="${j}"]`);
+        if (g) { g.classList.remove('shake'); void g.getBoundingClientRect(); g.classList.add('shake'); }
+      }
+    }
+  }
+}
+function pathsMainAct() {
+  if (pz.busy) return;
+  if (pz.state === 'ready') pathsStart();
+  else if (pz.state === 'running' || pz.state === 'guess') { stopTimer(); pathsTrace(pz.winner); }
+  else if (pz.state === 'revealed') {
+    pz.round++; pz.level = Math.min(pz.level + 1, PATH_LEVELS.length - 1);
+    pathsNew();
+  }
+}
+pathMain.addEventListener('click', pathsMainAct);
+buildLevels(pathLevelsEl, PATH_LEVELS, i => { if (pz.busy) return; pz.level = i; pathsNew(); });
+
+/* ---------- views ---------- */
+const views = { home: $('#home'), cups: $('#cups'), paths: $('#paths') };
+let current = '';
+function show(name, fromHash) {
+  if (!views[name]) name = 'home';
+  if (current === 'paths' && name !== 'paths' && pz.state === 'running') { stopTimer(); pz.state = 'guess'; }
+  Object.entries(views).forEach(([k, v]) => v.classList.toggle('active', k === name));
+  current = name;
+  hideToast();
+  if (!fromHash) { try { location.hash = name; } catch (e) {} }
+  if (name === 'cups') { if (!cup.built) cupsNewRound(); else requestAnimationFrame(layoutCups); }
+  if (name === 'paths' && !pz.built) pathsNew();
+}
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1) || 'home'; if (h !== current) show(h, true); });
+document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
+$('#homeBtn').addEventListener('click', () => show('home'));
+
+/* keep focus off buttons so Space always drives the game */
+document.addEventListener('click', e => { const b = e.target.closest('button'); if (b) setTimeout(() => b.blur(), 0); });
+
+document.addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key;
+  if (k === ' ' || k === 'Enter') {
+    if (e.target.closest && e.target.closest('button')) return;
+    e.preventDefault();
+    hideToast();
+    if (current === 'cups') cupsMain(); else if (current === 'paths') pathsMainAct();
+    return;
+  }
+  if (k === 'Escape') { hideToast(); show('home'); return; }
+  if (k === 'f' || k === 'F' || k === 'ب') { toggleFS(); return; }
+  if (k === 'm' || k === 'M' || k === 'ة') { toggleSound(); return; }
+  let idx = '12345'.indexOf(k); if (idx < 0) idx = '١٢٣٤٥'.indexOf(k);
+  if (idx < 0 || k === '') return;
+  if (current === 'home') { if (idx === 0) show('cups'); else if (idx === 1) show('paths'); }
+  else if (current === 'cups') cupsOpen(idx);
+  else if (current === 'paths') pathsTrace(idx);
+});
+
+show(location.hash.slice(1) || 'home', true);
+})();
+</script>
+</body>
+</html>
